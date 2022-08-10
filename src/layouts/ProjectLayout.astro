@@ -1,3 +1,23 @@
 ---
-const frontmatter = Astro.props
+import type { ProjectsFM } from "types/frontmatter";
+import Layout from "./Layout.astro";
+
+const {content } = Astro.props ;
+const  {title, description} = content as ProjectsFM
 ---
+
+<Layout title={title}>
+    <header>
+        <h1>{title}</h1>
+        <p>{description}</p>
+    </header>
+    <main>
+        <slot/>
+    </main>
+</Layout>
+
+<style>
+    :global(h2) {
+        color: red;
+    }
+</style>

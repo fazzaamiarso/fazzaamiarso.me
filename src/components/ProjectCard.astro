@@ -1,12 +1,10 @@
 ---
 import { Image } from "@astrojs/image/components";
+import type { ProjectsFM } from "types/frontmatter";
 import requestD from '../assets/requestD.png'
-type Props = {
-    cover: string,
-    title: string,
-    description: string,
-}
-const { title, cover, description } = Astro.props as Props
+
+const { title, cover, description } = Astro.props as ProjectsFM;
+const slug = title.toLowerCase();
 ---
 
 <li class="group hover:ring-2 hover:ring-primary-red transition-all  w-10/12 p-3 rounded-lg max-w-sm  shadow-sm">
@@ -20,6 +18,6 @@ const { title, cover, description } = Astro.props as Props
     </div>
     <h2 class="text-xl">{title}</h2>
     <p class="text-secondary-text text-sm mb-6">{description}</p>
-    <a href="#" class="group-hover:underline hover:underline text-primary-red transition-colors ">more
+    <a href={`/projects/${slug}`} class="group-hover:underline hover:underline text-primary-red transition-colors ">more
         details</a>
 </li>

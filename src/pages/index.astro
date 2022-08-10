@@ -1,14 +1,10 @@
 ---
 import ProjectCard from '@/components/ProjectCard.astro';
-import Layout from '../layouts/Layout.astro';
+import Layout from '@/layouts/Layout.astro';
+import type { ProjectsFM } from 'types/frontmatter';
 
-type Frontmatter = {
-	cover: string,
-	title: string,
-	description: string,
-}
 
-const projects = await Astro.glob<Frontmatter>('./projects/*.mdx')
+const projects = await Astro.glob<ProjectsFM>('./projects/*.mdx')
 ---
 
 <Layout title="Fazza Razaq Amiarso">
@@ -32,20 +28,5 @@ const projects = await Astro.glob<Frontmatter>('./projects/*.mdx')
 			)
 			})}
 		</ul>
-		<!-- <div
-			class="group hover:ring-2 hover:ring-primary-red transition-all  w-10/12 p-3 rounded-lg max-w-sm  shadow-sm">
-			<Image src={requestd} format="png" class="rounded-lg" alt="requestd logo" />
-			<div class="flex items-center py-2 gap-2">
-				<span class="text-xs px-1 ring-1 ring-primary-black rounded-sm">next.js</span>
-				<span class="text-xs px-1 ring-1 ring-primary-black rounded-sm">tailwind</span>
-				<span class="text-xs px-1 ring-1 ring-primary-black rounded-sm">prisma</span>
-				<span class="text-xs px-1 ring-1 ring-primary-black rounded-sm">trpc</span>
-			</div>
-			<h2 class="text-xl">RequestD</h2>
-			<p class="text-secondary-text text-sm mb-6">Collect song requests from people easily, integrated with
-				spotify API. Made for Hashnode X Planetscale hackathon</p>
-			<a href="#" class="group-hover:underline hover:underline text-primary-red transition-colors ">more
-				details</a>
-		</div> -->
 	</main>
 </Layout>
