@@ -1,5 +1,4 @@
 ---
-import Navbar from '@/components/Navbar.astro';
 import ProjectCard from '@/components/ProjectCard.astro';
 import Layout from '@/layouts/Layout.astro';
 import type { ProjectsFM } from 'types/frontmatter';
@@ -11,12 +10,13 @@ const projects = await Astro.glob<ProjectsFM>('./projects/*.mdx')
 <Layout title="Fazza Razaq Amiarso">
 	<main class="mt-12">
 		<h1 class="text-primary-black text-4xl mb-8">Hi, I am <span>Fazza Razaq Amiarso</span></h1>
-		<h2 class="text-2xl mb-6">Projects</h2>
-		<ul>
+		<h2 id="featured-projects" class="text-2xl mb-6">Projects</h2>
+		<ul class="flex flex-col w-full sm:flex-row sm:flex-wrap lg:justify-evenly place-content-center">
 			{projects.map(project => {
 			return (
-			<ProjectCard cover={project.frontmatter.cover} description={project.frontmatter.description}
-				title={project.frontmatter.title} techs={project.frontmatter.techs}  />
+			<ProjectCard {...project.frontmatter} />
+			<ProjectCard {...project.frontmatter} />
+			<ProjectCard {...project.frontmatter} />
 			)
 			})}
 		</ul>
