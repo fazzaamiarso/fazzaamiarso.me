@@ -1,23 +1,26 @@
 ---
+import { Image } from "@astrojs/image/components";
 import type { ProjectsFM } from "types/frontmatter";
 import Layout from "./Layout.astro";
+import requestd from '../assets/requestd.png'
 
-const {content } = Astro.props ;
-const  {title, description} = content as ProjectsFM
+const { content } = Astro.props;
+const { title, description, techs, cover } = content as ProjectsFM
 ---
 
 <Layout title={title}>
-    <header>
-        <h1>{title}</h1>
-        <p>{description}</p>
-    </header>
-    <main>
-        <slot/>
+    <main class="prose prose-lg">
+        <div class="prose lg:prose-lg">
+            <Image src={import.meta.env.DEV ? requestd : cover } alt={title} format="webp" aspectRatio="16:9"
+                width={1200} height={630} />
+            <h1>{title}</h1>
+            <p>{description}</p>
+            <p>{JSON.stringify(techs)}</p>
+        </div>
+        <slot />
     </main>
 </Layout>
 
 <style>
-    :global(h2) {
-        color: red;
-    }
+
 </style>
