@@ -7,5 +7,6 @@ import mdx from "@astrojs/mdx";
 
 // https://astro.build/config
 export default defineConfig({
-  integrations: [tailwind(), react(), image(), mdx()]
+  vite: { ssr: { external: ["svgo"] } },
+  integrations: [tailwind(), react(), image(), mdx()],
 });

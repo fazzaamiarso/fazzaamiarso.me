@@ -1,0 +1,20 @@
+---
+import {Icon} from 'astro-icon'
+
+const {icon} = Astro.props as {icon : string}
+
+const icon_list : Record<string, {name : string, iconName : `simple-icons:${string}`}> = {
+    react : {
+        "name" : "React",
+        'iconName' : 'simple-icons:react'
+    },
+    typescript : {
+        "name" : "typescript",
+        'iconName' : 'simple-icons:typescript'
+    }
+}
+const pack = icon_list[icon].iconName
+const name = icon_list[icon].name
+---
+<Icon name={pack} class="w-20" /> 
+<p>{name}</p>
