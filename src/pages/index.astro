@@ -11,13 +11,13 @@ const projects = await Astro.glob<ProjectsFM>('./projects/*.mdx');
 <Layout title="Fazza Razaq Amiarso">
 	<main class="mt-12">
 		<h1 class="text-primary-black text-4xl mb-8">Hi, I am <span>Fazza Razaq Amiarso</span></h1>
-		<div class="mb-12">
-			<h2 id="featured-projects" class="text-2xl ">Techs</h2>
-			<p class="mb-6 text-secondary-text">Some of tech that I've used or have worked with</p>
+		<div class="mb-12 ">
+			<h2  class="text-2xl ">Techs</h2>
+			<p class="mb-6 text-secondary-text">Some of tech that I've used or have worked with.</p>
 			<TechIcons/>
 		</div>
 		<h2 id="featured-projects" class="text-2xl ">Projects</h2>
-		<p class="mb-6 text-secondary-text">My featured works, in detail</p>
+		<p class="mb-6 text-secondary-text">My featured works, in detail.</p>
 		<ul class="flex flex-col w-full gap-4 lg:gap-0 sm:justify-evenly sm:flex-row sm:flex-wrap lg:justify-evenly place-content-center">
 			{projects.map(project => {
 			return (

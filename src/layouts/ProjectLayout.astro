@@ -5,7 +5,7 @@ import Layout from "./Layout.astro";
 import requestd from '../assets/requestd.png'
 
 const { content } = Astro.props;
-const { title, description, techs, cover } = content as ProjectsFM
+const { title, description, techs, cover } = content as ProjectsFM;
 ---
 
 <Layout title={title}>
@@ -13,14 +13,18 @@ const { title, description, techs, cover } = content as ProjectsFM
         <div class="prose lg:prose-lg">
             <Image src={import.meta.env.DEV ? requestd : cover } alt={title} format="webp" aspectRatio="16:9"
                 width={1200} height={630} />
-            <h1>{title}</h1>
+            <h1 >{title}</h1>
             <p>{description}</p>
-            <p>{JSON.stringify(techs)}</p>
+            <ul>
+                {techs.map(tech => {
+                    return <li class="">{tech}</li>
+                })}
+            </ul>
         </div>
         <slot />
     </main>
 </Layout>
 
-<style>
-
+<style >
+    
 </style>
