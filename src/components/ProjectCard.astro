@@ -7,11 +7,11 @@ const { title, cover, description } = Astro.props as ProjectsFM;
 const slug = title.toLowerCase().split(" ").join('-');
 ---
 
-<li class=" group basis-full sm:basis-[45%] lg:basis-[32%] lg:flex-nowrap hover:cursor-pointer transition-all  p-3 rounded-lg max-w-md  ">
+<li class="group relative basis-full sm:basis-[45%] lg:basis-[32%] lg:flex-nowrap hover:cursor-pointer transition-all  p-3 rounded-lg max-w-md  ">
     <Image src={import.meta.env.DEV ? requestD : cover} aspectRatio="16:9" format="png" class="rounded-lg group-hover:ring-2 border-4 border-white transition-all group-hover:ring-primary-red " alt={title}
         width={1200} height={630} />
     <h2 class="text-xl ">{title}</h2>
     <p class="text-secondary-text text-sm mb-6 line-clamp-3">{description}</p>
-    <a href={`/projects/${slug}`} class="group-hover:underline hover:underline text-primary-red transition-all ">more
+    <a href={`/projects/${slug}`} class="group-hover:underline hover:underline text-primary-red transition-all z-10 block after:absolute after:inset-0 ">more
         details</a>
 </li>
