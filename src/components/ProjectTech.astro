@@ -1,0 +1,10 @@
+---
+import TechIcons from "./TechIcons.astro";
+
+const {techs} = Astro.props as {techs : string[]}
+---
+<h2 >Techs used</h2>
+<div class="ml-0 flex gap-6 items-center ">
+    {techs.map(tech => <TechIcons iconName={tech} />)}
+</div>
+<slot />

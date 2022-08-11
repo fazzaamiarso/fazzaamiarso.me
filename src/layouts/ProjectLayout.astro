@@ -9,22 +9,19 @@ const { title, description, techs, cover } = content as ProjectsFM;
 ---
 
 <Layout title={title}>
-    <main class="prose prose-lg">
-        <div class="prose lg:prose-lg">
+    <main class="prose lg:prose-lg prose-headings:text-primary-red">
+        <div class="">
             <Image src={import.meta.env.DEV ? requestd : cover } alt={title} format="webp" aspectRatio="16:9"
                 width={1200} height={630} />
-            <h1 >{title}</h1>
+            <h1>{title}</h1>
             <p>{description}</p>
-            <ul>
-                {techs.map(tech => {
-                    return <li class="">{tech}</li>
-                })}
-            </ul>
         </div>
-        <slot />
+            <slot />
     </main>
 </Layout>
 
-<style >
-    
+<style>
+    :global(.language-id) {
+        @apply -mt-4 bg-secondary-brown w-max text-primary-black rounded-b-md px-3 py-1 mb-4
+    }
 </style>
