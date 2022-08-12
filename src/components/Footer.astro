@@ -1,0 +1,23 @@
+---
+import Icon from "astro-icon";
+
+const githubLink = "https://github.com/fazzaamiarso";
+const linkedinLink = "https://www.linkedin.com/in/fazzaamiarso/";
+const twitterLink = "https://twitter.com/faz_razq";
+const emailLink = "fazzaamiarso@gmail.com";
+
+
+---
+<footer class="mt-12 w-full py-10 flex items-center justify-center border-t-2 border-secondary-brown">
+    <div class="flex items-center gap-6 text-primary-black">
+        <a href={githubLink}  target="_blank" >
+            <Icon name="simple-icons:github" width="25" />
+        </a>
+        <a href={linkedinLink}  target="_blank">
+            <Icon name="simple-icons:linkedin" width="25"/>
+        </a>
+        <a href={twitterLink}  target="_blank">
+            <Icon name="simple-icons:twitter" width="25" />
+        </a>
+    </div>
+</footer>
