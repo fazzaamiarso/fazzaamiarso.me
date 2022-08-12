@@ -4,34 +4,62 @@ import type { ProjectsFM } from "types/frontmatter";
 import Layout from "./Layout.astro";
 import requestd from '../assets/requestd.png'
 import TOC from '@/components/TOC'
+import Icon from "astro-icon";
 
 const { content, headings } = Astro.props;
-const { title, description, techs, cover } = content as ProjectsFM;
+const { title, description,  cover } = content as ProjectsFM;
 ---
 
 <Layout title={title}>
     <main>
-        <div class="">
+        <div class="mb-12">
             <Image src={import.meta.env.DEV ? requestd : cover } alt={title} format="webp" aspectRatio="16:9"
-                width={1200} height={630} />
-            <h1>{title}</h1>
-            <p>{description}</p>
+                width={1200} height={630}/>
+            <h1 class="text-4xl lg:text-5xl mt-8 mb-6">{title}</h1>
+            <p class="prose">{description}</p>
         </div>
-        <div class="grid grid-cols-4 gap-x-12 relative w-full">
-            <article class="col-span-3 prose prose-headings:text-primary-red lg:prose-lg">
+        <div class="block mb-12 lg:grid grid-cols-4 gap-x-6 relative w-full">
+            <article class="col-span-3 prose prose-headings:text-primary-red lg:prose-base">
                 <slot />
             </article>
-            <div class="hidden lg:block">
-                <div class="sticky top-[6rem] max-h-[calc(100vh-10rem)] overflow-y-scroll overflow-x-hidden">
-                    <h3 class="mt-12 text-lg mb-6">On this page</h3>
+            <div class="hidden lg:block ">
+                <div class="sticky  top-32 max-h-[calc(100vh-10rem)] overflow-y-scroll overflow-x-hidden">
+                    <h3 class="text-lg mb-2 px-2">On this page</h3>
                     <TOC headings={headings} client:load/>
                 </div>
             </div>
+        </div>
+        <div class="flex items-center justify-start w-full">
+            <a href="/" class="group text-primary-red flex gap-1"><Icon name="akar-icons:arrow-left" width="20" class="group-hover:-translate-x-1 delay-150" /><span class="line font-semibold">return home</span></a>
         </div>
     </main>
 </Layout>
 
 <style>
+     a .line {
+        position: relative;
+    }
+
+    a .line::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        border-radius: 4px;
+        bottom: -4px;
+        left: 0;
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform .2s ease-in-out;
+    }
+    a .line::before {
+        @apply bg-primary-red
+    }
+
+    a .line:hover::before {
+        transform: scaleX(1);
+    }
+
     :global(.language-id) {
         @apply -mt-4 bg-secondary-brown w-max text-primary-black rounded-b-md px-3 py-1 mb-4
     }

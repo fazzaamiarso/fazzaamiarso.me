@@ -11,8 +11,12 @@ const projects = await Astro.glob<ProjectsFM>('./projects/*.mdx');
 
 <Layout title="Fazza Razaq Amiarso">
 	<main class="my-12">
-		<h1 class="text-primary-red text-4xl mb-8">Hi, I'm <span>Fazza Razaq Amiarso</span></h1>
-		<div class="mt-12   space-y-8">
+		<h1 class="text-primary-red text-4xl mb-8">
+			<div class="text-primary-black font-semibold text-xl mb-4">Hi, I'm Fazza Razaq Amiarso</div>
+			<div class="max-w-[20ch] mb-2">I build software to help create a better world</div>
+			<div class="text-primary-black text-lg font-normal">and I love to share and teach while at it </div>
+		</h1>
+		<div class="mt-20   space-y-8">
 			<div>
 				<h2 class="text-2xl">Techs</h2>
 				<p class=" text-secondary-text">Some of tech that I've used or have worked with.</p>
