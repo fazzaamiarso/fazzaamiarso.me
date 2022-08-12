@@ -3,4 +3,7 @@ export type ProjectsFM = {
   title: string;
   description: string;
   techs: string[];
+  github: string;
+  liveSite: string;
+  demo?: string;
 };

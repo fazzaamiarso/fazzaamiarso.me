@@ -7,16 +7,25 @@ import TOC from '@/components/TOC'
 import Icon from "astro-icon";
 
 const { content, headings } = Astro.props;
-const { title, description,  cover } = content as ProjectsFM;
+const { title, description, cover, github, liveSite } = content as ProjectsFM;
 ---
 
 <Layout title={title}>
     <main>
         <div class="mb-12">
             <Image src={import.meta.env.DEV ? requestd : cover } alt={title} format="webp" aspectRatio="16:9"
-                width={1200} height={630}/>
+                width={1200} height={630} class="rounded-md"/>
             <h1 class="text-4xl lg:text-5xl mt-8 mb-6">{title}</h1>
             <p class="prose">{description}</p>
+            <div class="flex items-center gap-6 mt-4">
+                <a href={github}  target="_blank"  class="flex items-center gap-1 hover:text-primary-red transition-all">
+                    <Icon name="simple-icons:github" width="20" />Source code
+                </a>
+                <a href={liveSite} target="_blank" class="flex items-center gap-1 hover:text-primary-red transition-all">
+                    <Icon name="akar-icons:link-chain" width="20" />Live site
+                </a>
+            </div>
+
         </div>
         <div class="block mb-12 lg:grid grid-cols-4 gap-x-6 relative w-full">
             <article class="col-span-3 prose prose-headings:text-primary-red lg:prose-base">
@@ -25,18 +34,21 @@ const { title, description,  cover } = content as ProjectsFM;
             <div class="hidden lg:block ">
                 <div class="sticky  top-32 max-h-[calc(100vh-10rem)] overflow-y-scroll overflow-x-hidden">
                     <h3 class="text-lg mb-2 px-2">On this page</h3>
-                    <TOC headings={headings} client:load/>
+                    <TOC headings={headings} client:load />
                 </div>
             </div>
         </div>
         <div class="flex items-center justify-start w-full">
-            <a href="/" class="group text-primary-red flex gap-1"><Icon name="akar-icons:arrow-left" width="20" class="group-hover:-translate-x-1 delay-150" /><span class="line font-semibold">return home</span></a>
+            <a href="/" class="group text-primary-red flex gap-1">
+                <Icon name="akar-icons:arrow-left" width="20" class="group-hover:-translate-x-1 delay-150" /><span
+                    class="line font-semibold">return home</span>
+            </a>
         </div>
     </main>
 </Layout>
 
 <style>
-     a .line {
+    a .line {
         position: relative;
     }
 
@@ -52,6 +64,7 @@ const { title, description,  cover } = content as ProjectsFM;
         transform: scaleX(0);
         transition: transform .2s ease-in-out;
     }
+
     a .line::before {
         @apply bg-primary-red
     }
