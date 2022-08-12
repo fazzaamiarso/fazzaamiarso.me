@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+    "types": ["astro/client"],
+    "jsx": "react-jsx",
     // Enable top-level await, and other modern ESM features.
     "target": "ESNext",
     "module": "ESNext",

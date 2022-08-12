@@ -27,6 +27,7 @@ import rehypeSlug from "rehype-slug";
 export default defineConfig({
   // vite: { ssr: { external: ["svgo"] } },
   integrations: [
+    react(),
     mdx({
       rehypePlugins: [
         rehypeSlug,
@@ -51,7 +52,6 @@ export default defineConfig({
       ],
     }),
     tailwind(),
-    react(),
     image(),
   ],
   markdown: {
