@@ -21,8 +21,8 @@ const { title, description, techs, cover } = content as ProjectsFM;
             <article class="col-span-3 prose prose-headings:text-primary-red lg:prose-lg">
                 <slot />
             </article>
-            <div class="">
-                <div class="sticky top-[6rem] max-h-[calc(100vh-10rem)] overflow-scroll">
+            <div class="hidden lg:block">
+                <div class="sticky top-[6rem] max-h-[calc(100vh-10rem)] overflow-y-scroll overflow-x-hidden">
                     <h3 class="mt-12 text-lg mb-6">On this page</h3>
                     <TOC headings={headings} client:load/>
                 </div>

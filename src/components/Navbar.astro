@@ -1,14 +1,68 @@
 ---
+import clsx from "clsx";
 
+const navigation = [
+    {
+        name: "Home",
+        path: "/",
+        matchName : "/"
+    },
+    {
+        name: "Projects",
+        path: "/#featured-projects",
+        matchName : "/projects"
+    },
+    {
+        name: "Blog",
+        path: "/blog",
+        matchName : "/blog"
+    },
+    {
+        name: "About",
+        path: "#",
+        matchName : "/about"
+    },
+]
+const currentPath = Astro.url.pathname;
+const isHomePath = Astro.url.pathname === "/"
 ---
 
 <header class="w-full  sticky -top-1 bg-primary-white z-40 ">
     <nav class="py-6 ">
         <ul class="flex w-full items-center gap-4">
-            <li><a href="/">Home</a></li>
-            <li><a href="#featured-projects">Projects</a></li>
-            <li><a href="/blog">Blog</a></li>
-            <li><a href="#">About</a></li>
+            {navigation.map(item => {
+            const isHomeUrl = item.matchName === '/'
+            const isActivePath = (currentPath.startsWith(item.matchName) && !isHomeUrl) || (isHomePath && isHomeUrl)
+            return ( <li><a href={item.path} class={clsx(isActivePath ? "font-semibold before:scale-x-100" : "text-secondary-text" ,
+                    )}>{item.name}</a></li>)
+            })}
         </ul>
     </nav>
 </header>
+
+<style>
+    a {
+        position: relative;
+    }
+
+    a::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        border-radius: 4px;
+        bottom: -4px;
+        left: 0;
+        transform-origin: right;
+        transform: scaleX(0);
+        transition: transform .2s ease-in-out;
+    }
+    a::before {
+        @apply bg-primary-red
+    }
+
+    a:hover::before {
+        transform-origin: left;
+        transform: scaleX(1);
+    }
+</style>

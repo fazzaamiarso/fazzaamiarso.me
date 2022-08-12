@@ -40,15 +40,21 @@ export default function TOC({ headings }: Props) {
   return (
     <ul className="space-y-2 " ref={tocRef}>
       {headings.map((h) => {
+        const isActiveId = currentId === h.slug;
         return (
-          <li key={h.slug} className="text-ellipsis line-clamp-1">
+          <li
+            key={h.slug}
+            className={clsx(
+              " p-2 ",
+              h.depth > 2 ? "ml-4" : "",
+              isActiveId ? "bg-secondary-brown  rounded-md" : ""
+            )}
+          >
             <a
               href={`#${h.slug}`}
               className={clsx(
-                h.depth > 2 ? "pl-4" : "",
-                currentId.trim() === h.slug.trim()
-                  ? "text-primary-red"
-                  : "text-blue-400"
+                "line-clamp-1 text-sm",
+                isActiveId ? "text-primary-red " : "text-secondary-text"
               )}
             >
               {h.text}
