@@ -3,20 +3,30 @@ import { Image } from "@astrojs/image/components";
 import type { ProjectsFM } from "types/frontmatter";
 import Layout from "./Layout.astro";
 import requestd from '../assets/requestd.png'
+import TOC from '@/components/TOC'
 
-const { content } = Astro.props;
+const { content, headings } = Astro.props;
 const { title, description, techs, cover } = content as ProjectsFM;
 ---
 
 <Layout title={title}>
-    <main class="prose lg:prose-lg prose-headings:text-primary-red">
+    <main>
         <div class="">
             <Image src={import.meta.env.DEV ? requestd : cover } alt={title} format="webp" aspectRatio="16:9"
                 width={1200} height={630} />
             <h1>{title}</h1>
             <p>{description}</p>
         </div>
-            <slot />
+        <div class="grid grid-cols-4 gap-x-12 relative w-full">
+            <div class="col-span-3 prose prose-headings:text-primary-red lg:prose-lg">
+                <slot />
+            </div>
+            <div class="">
+                <div class="sticky top-[6rem] max-h-[calc(100vh-10rem)] overflow-scroll">
+                    <TOC headings={headings} />
+                </div>
+            </div>
+        </div>
     </main>
 </Layout>
 
