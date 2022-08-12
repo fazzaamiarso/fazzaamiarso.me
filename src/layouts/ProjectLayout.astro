@@ -18,12 +18,13 @@ const { title, description, techs, cover } = content as ProjectsFM;
             <p>{description}</p>
         </div>
         <div class="grid grid-cols-4 gap-x-12 relative w-full">
-            <div class="col-span-3 prose prose-headings:text-primary-red lg:prose-lg">
+            <article class="col-span-3 prose prose-headings:text-primary-red lg:prose-lg">
                 <slot />
-            </div>
+            </article>
             <div class="">
                 <div class="sticky top-[6rem] max-h-[calc(100vh-10rem)] overflow-scroll">
-                    <TOC headings={headings} />
+                    <h3 class="mt-12 text-lg mb-6">On this page</h3>
+                    <TOC headings={headings} client:load/>
                 </div>
             </div>
         </div>
