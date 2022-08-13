@@ -2,7 +2,8 @@ type Packs = "simple-icons" | "logos" | "teenyicons" | "mdi";
 
 export const icon_list: Record<
   string,
-  { name: string; iconName: `${Packs}:${string}` }
+  | { name: string; iconName: `${Packs}:${string}`; custom?: false }
+  | { name: string; iconName: string; custom: true }
 > = {
   react: {
     name: "React",
@@ -60,10 +61,25 @@ export const icon_list: Record<
     name: "Figma",
     iconName: "teenyicons:figma-outline",
   },
-  // github: {
-  //   name: "Github",
-  //   iconName: "simple-icons:github",
-  // },
+  supabase: {
+    name: "Supabase",
+    iconName: "simple-icons:supabase",
+  },
+  trpc: {
+    name: "Trpc",
+    iconName: "trpc",
+    custom: true,
+  },
+  planetscale: {
+    name: "Planetscale",
+    iconName: "planetscale",
+    custom: true,
+  },
+  a11y: {
+    name: "Accessibility",
+    iconName: "a11y",
+    custom: true,
+  },
 };
 
 export const tech_names = Object.keys(icon_list);
