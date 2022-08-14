@@ -38,7 +38,7 @@ export default function TOC({ headings }: Props) {
   }, [tocRef.current]);
 
   return (
-    <ul className="space-y-2 " ref={tocRef}>
+    <ul className=" " ref={tocRef}>
       {headings.map((h) => {
         const isActiveId = currentId === h.slug;
         return (

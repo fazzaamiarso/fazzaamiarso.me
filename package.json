@@ -26,6 +26,8 @@
     "clsx": "^1.2.1",
     "dayjs": "^1.11.5",
     "hastscript": "^7.0.2",
+    "mdast-util-to-string": "^3.1.0",
+    "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1"
   }

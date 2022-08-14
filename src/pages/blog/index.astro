@@ -6,6 +6,7 @@ dayjs.extend(localizedFormat)
 import type { BlogFM } from 'types/frontmatter';
 
 const posts = await Astro.glob<BlogFM>("./*.mdx")
+
 ---
 
 <Layout title="Fazza Razaq Amiarso">
@@ -13,11 +14,12 @@ const posts = await Astro.glob<BlogFM>("./*.mdx")
         <h1 class="text-primary-black text-4xl">The Blog</h1>
         <p class="text-secondary-text">Where I dump and share my idea. And sometime struggle. </p>
         <ul class="mt-12 space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-6">{posts.map(post => {
+            const slug = post.frontmatter.title.toLowerCase().split(" ").join('-');
             return <li class="">
                 <span class="text-xs mb-1 text-secondary-text">{dayjs(post.frontmatter.publishedAt).format("LL")}</span>
                 <h2 class="text-2xl mb-2">{post.frontmatter.title}</h2>
                 <p class="text-secondary-text mb-4 prose">{post.frontmatter.description}</p>
-                <a href="#" class="text-primary-red font-semibold inline-block">Read more</a>
+                <a href={`/blog/${slug}`} class="text-primary-red font-semibold inline-block">Read more</a>
             </li>
             <li class="">
                 <span class="text-xs mb-1 text-secondary-text">{dayjs(post.frontmatter.publishedAt).format("LL")}</span>

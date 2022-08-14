@@ -1,0 +1,53 @@
+---
+import type { BlogFM } from "types/frontmatter";
+import Layout from "./Layout.astro";
+import dayjs from 'dayjs'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
+import TOC from "@/components/TOC";
+import Icon from "astro-icon";
+dayjs.extend(localizedFormat)
+
+const { headings, frontmatter } = Astro.props;
+const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM & {minutesRead  : any};
+---
+<Layout title={title}>
+    <main>
+        <div class="prose">
+            <span class="text-sm text-secondary-text">Published at {dayjs(publishedAt).format("LL")}</span>
+            <h1>{title}</h1>
+            <p>{description}</p>
+            <span class="text-primary-black text-sm flex items-center gap-1 font-semibold"><Icon name="bi:stopwatch-fill" width='15' class="text-primary-red" /> {minutesRead}</span>
+        </div>
+        <div>
+        </div>
+        <div class="block mt-20 mb-1 lg:grid grid-cols-4 gap-x-2 relative w-full">
+            <article class="blog max-w-2xl  col-span-3 prose prose-headings:text-primary-red lg:prose-base">
+                <slot />
+            </article>
+            <div class="hidden lg:block ">
+                <div class="sticky  top-32 max-h-[calc(100vh-10rem)] overflow-y-scroll overflow-x-hidden">
+                    <h3 class="tracking-wider mb-2 px-2 font-semibold">ON THIS PAGE</h3>
+                    <TOC headings={headings} client:load />
+                </div>
+            </div>
+        </div>
+    </main>
+</Layout>
+
+<style>
+    .blog :global(a) {
+        position: relative;
+        font-weight: 600;
+        text-decoration: none;
+        color: #e16358;
+        background-image: linear-gradient(#e16358, #e16358);
+        background-repeat: no-repeat;
+        background-size: 0% 2px;
+        background-position: left bottom;
+        transition: .3s background-size ease;
+    }
+
+    .blog :global(a):hover {
+        background-size: 100% 2px;
+    }
+</style>
