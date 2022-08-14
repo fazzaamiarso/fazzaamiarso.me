@@ -3,26 +3,52 @@ import Footer from "@/components/Footer.astro";
 import Navbar from "@/components/Navbar.astro";
 
 interface Props {
-	title: string;
+	title: string,
+	description: string,
+	type?: string,
 }
 
-const { title } = Astro.props as Props;
+const { title, description, type } = Astro.props as Props;
 ---
 
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
+	<title>{title}</title>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width" />
-	<link rel="icon" type="image/x-icon" href="/favicon.ico" />
+	<!-- Favicons -->
+	<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+	<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#1c1c1c">
+	<!--  -->
+	<!-- Open graph -->
 	<meta name="generator" content={Astro.generator} />
-	<title>{title}</title>
+	<meta property="og:title" content={title} />
+	<meta property="og:url" content={Astro.url.href} />
+	<meta property="og:description" content={description
+		|| "Personal website of Fazza Razaq Amiarso. Blog, Projects, and more." } />
+	<meta property="og:type" content={type || "website" } />
+	<meta property="og:image"
+		content="https://res.cloudinary.com/dkiqn0gqg/image/upload/v1660512696/og-dark_djug88.png" />
+	<meta property="og:image:type" content="image/jpeg" />
+	<meta property="og:image:width" content="1200" />
+	<meta property="og:image:height" content="630" />
+	<meta property="og:image:alt" content="Fazza Razaq Amiarso personal site banner" />
+	<!--  -->
+	<!-- Twitter card -->
+	<meta name="twitter:card" content="summary" />
+	<meta name="twitter:creator" content="@faz_razq" />
+	<!--  -->
 </head>
+
 <body class="bg-primary-white max-w-5xl mx-auto w-10/12 ">
-	<Navbar/>
+	<Navbar />
 	<slot />
-	<Footer/>
+	<Footer />
 </body>
 
 </html>

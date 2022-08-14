@@ -11,7 +11,7 @@ const { content, headings } = Astro.props;
 const { title, description, cover, github, liveSite, demo } = content as ProjectsFM;
 ---
 
-<Layout title={`${title} - Fazza Amiarso`}>
+<Layout title={`${title} - Fazza Amiarso`} description={description}>
     <main>
         <div class="mb-12">
             <Image src={import.meta.env.DEV ? requestd : cover } alt={title} format="webp" aspectRatio="16:9"
