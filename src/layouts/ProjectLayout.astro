@@ -5,6 +5,7 @@ import Layout from "./Layout.astro";
 import requestd from '../assets/requestd.png'
 import TOC from '@/components/TOC'
 import Icon from "astro-icon";
+import ReturnLink from "@/components/ReturnLink.astro";
 
 const { content, headings } = Astro.props;
 const { title, description, cover, github, liveSite, demo } = content as ProjectsFM;
@@ -34,51 +35,18 @@ const { title, description, cover, github, liveSite, demo } = content as Project
 
         </div>
         <div class="block mb-12 lg:grid grid-cols-4 gap-x-2 relative w-full">
-            <article class="max-w-2xl col-span-3 prose prose-headings:text-primary-red lg:prose-base">
+            <article class="max-w-2xl col-span-3 prose prose-img:rounded-md prose-headings:text-primary-red lg:prose-base">
                 <slot />
             </article>
-            <div class="hidden lg:block ">
-                <div class="sticky  top-32 max-h-[calc(100vh-10rem)] overflow-y-scroll overflow-x-hidden">
-                    <h3 class="tracking-wider mb-2 px-2 font-semibold">ON THIS PAGE</h3>
-                    <TOC headings={headings} client:load />
-                </div>
-            </div>
+            <TOC headings={headings} client:load />
         </div>
         <div class="flex items-center justify-start w-full">
-            <a href="/" class="group text-primary-red flex gap-1">
-                <Icon name="akar-icons:arrow-left" width="20" class="group-hover:-translate-x-1 delay-150" /><span
-                    class="line font-semibold">return home</span>
-            </a>
+            <ReturnLink href="/" text="return home" />
         </div>
     </main>
 </Layout>
 
 <style>
-    a .line {
-        position: relative;
-    }
-
-    a .line::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        border-radius: 4px;
-        bottom: -4px;
-        left: 0;
-        transform-origin: right;
-        transform: scaleX(0);
-        transition: transform .2s ease-in-out;
-    }
-
-    a .line::before {
-        @apply bg-primary-red
-    }
-
-    a .line:hover::before {
-        transform: scaleX(1);
-    }
-
     .meta::before {
         content: '';
         position: absolute;

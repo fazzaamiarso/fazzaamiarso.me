@@ -5,31 +5,34 @@ import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import TOC from "@/components/TOC";
 import Icon from "astro-icon";
+import ReturnLink from "@/components/ReturnLink.astro";
 dayjs.extend(localizedFormat)
 
 const { headings, frontmatter } = Astro.props;
-const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM & {minutesRead  : any};
+const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM & { minutesRead: any };
 ---
+
 <Layout title={title}>
-    <main>
+    <main class="mt-20">
         <div class="prose">
             <span class="text-sm text-secondary-text">Published at {dayjs(publishedAt).format("LL")}</span>
             <h1>{title}</h1>
             <p>{description}</p>
-            <span class="text-primary-black text-sm flex items-center gap-1 font-semibold"><Icon name="bi:stopwatch-fill" width='15' class="text-primary-red" /> {minutesRead}</span>
+            <span class="text-primary-black text-sm flex items-center gap-1 font-semibold">
+                <Icon name="bi:stopwatch-fill" width='15' class="text-primary-red" /> {minutesRead}
+            </span>
         </div>
+        <div class="h-px bg-secondary-brown w-full mt-8" />
         <div>
         </div>
         <div class="block mt-20 mb-1 lg:grid grid-cols-4 gap-x-2 relative w-full">
-            <article class="blog max-w-2xl  col-span-3 prose prose-headings:text-primary-red lg:prose-base">
+            <article class="blog max-w-2xl  col-span-3 prose prose-img:rounded-md prose-headings:text-primary-red lg:prose-base">
                 <slot />
             </article>
-            <div class="hidden lg:block ">
-                <div class="sticky  top-32 max-h-[calc(100vh-10rem)] overflow-y-scroll overflow-x-hidden">
-                    <h3 class="tracking-wider mb-2 px-2 font-semibold">ON THIS PAGE</h3>
-                    <TOC headings={headings} client:load />
-                </div>
-            </div>
+            <TOC headings={headings} client:load />
+        </div>
+        <div class="mt-12 flex items-center justify-start w-full">
+            <ReturnLink href="/blog" text="return to blog" />
         </div>
     </main>
 </Layout>

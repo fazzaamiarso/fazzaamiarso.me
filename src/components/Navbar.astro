@@ -29,7 +29,7 @@ const isHomePath = Astro.url.pathname === "/"
 
 <header class="w-full  sticky -top-1 bg-primary-white z-40 ">
     <nav class="py-6 ">
-        <ul class="flex w-full items-center gap-4">
+        <ul class="flex w-full items-center gap-6">
             {navigation.map(item => {
             const isHomeUrl = item.matchName === '/'
             const isActivePath = (currentPath.startsWith(item.matchName) && !isHomeUrl) || (isHomePath && isHomeUrl)

@@ -38,30 +38,35 @@ export default function TOC({ headings }: Props) {
   }, [tocRef.current]);
 
   return (
-    <ul className=" " ref={tocRef}>
-      {headings.map((h) => {
-        const isActiveId = currentId === h.slug;
-        return (
-          <li
-            key={h.slug}
-            className={clsx(
-              " p-2 transition-all",
-              h.depth > 2 ? "ml-4" : "",
-              isActiveId ? "bg-secondary-brown  rounded-md" : ""
-            )}
-          >
-            <a
-              href={`#${h.slug}`}
-              className={clsx(
-                "line-clamp-1 text-sm",
-                isActiveId ? "text-primary-red " : "text-secondary-text"
-              )}
-            >
-              {h.text}
-            </a>
-          </li>
-        );
-      })}
-    </ul>
+    <aside className="hidden lg:block">
+      <div className="sticky top-32 max-h-[calc(100vh-10rem)] overflow-y-auto overflow-x-hidden">
+        <h2 className="tracking-wider mb-2 px-2 font-semibold">ON THIS PAGE</h2>
+        <ul className=" " ref={tocRef}>
+          {headings.map((h) => {
+            const isActiveId = currentId === h.slug;
+            return (
+              <li
+                key={h.slug}
+                className={clsx(
+                  " p-2 transition-all",
+                  h.depth > 2 ? "ml-4" : "",
+                  isActiveId ? "bg-secondary-brown  rounded-md" : ""
+                )}
+              >
+                <a
+                  href={`#${h.slug}`}
+                  className={clsx(
+                    "line-clamp-1 text-sm",
+                    isActiveId ? "text-primary-red " : "text-secondary-text"
+                  )}
+                >
+                  {h.text}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+    </aside>
   );
 }
