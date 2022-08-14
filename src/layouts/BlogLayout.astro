@@ -9,12 +9,12 @@ import ReturnLink from "@/components/ReturnLink.astro";
 dayjs.extend(localizedFormat)
 
 const { headings, frontmatter } = Astro.props;
-const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM & { minutesRead: any };
+const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM 
 ---
 
 <Layout title={title} description={description}>
     <main class="mt-20">
-        <div class="prose">
+        <div class="prose max-w-5xl">
             <span class="text-sm text-secondary-text">Published at {dayjs(publishedAt).format("LL")}</span>
             <h1>{title}</h1>
             <p>{description}</p>
