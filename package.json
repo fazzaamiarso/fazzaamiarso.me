@@ -27,6 +27,7 @@
     "dayjs": "^1.11.5",
     "hastscript": "^7.0.2",
     "mdast-util-to-string": "^3.1.0",
+    "react-lite-youtube-embed": "^2.3.1",
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-external-links": "^2.0.0",

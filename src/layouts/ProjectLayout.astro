@@ -35,7 +35,7 @@ const { title, description, cover, github, liveSite, demo } = content as Project
 
         </div>
         <div class="block mb-12 lg:grid grid-cols-4 gap-x-2 relative w-full">
-            <article class="max-w-2xl col-span-3 prose prose-img:rounded-md prose-headings:text-primary-red lg:prose-base">
+            <article class="project max-w-2xl col-span-3 prose prose-img:rounded-md prose-headings:text-primary-red lg:prose-base">
                 <slot />
             </article>
             <TOC headings={headings} client:load />
@@ -47,6 +47,22 @@ const { title, description, cover, github, liveSite, demo } = content as Project
 </Layout>
 
 <style>
+    .project :global(a) {
+        position: relative;
+        font-weight: 600;
+        text-decoration: none;
+        color: #e16358;
+        background-image: linear-gradient(#e16358, #e16358);
+        background-repeat: no-repeat;
+        background-size: 0% 2px;
+        background-position: left bottom;
+        transition: .3s background-size ease;
+    }
+
+    .project :global(a):hover {
+        background-size: 100% 2px;
+    }
+
     .meta::before {
         content: '';
         position: absolute;

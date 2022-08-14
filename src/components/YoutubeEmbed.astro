@@ -1,0 +1,19 @@
+---
+import LiteYouTubeEmbed from 'react-lite-youtube-embed';
+
+type Props = {
+    youtubeId : string,
+    title : string
+}
+const {youtubeId, title} = Astro.props as Props 
+---
+<div>
+    <LiteYouTubeEmbed 
+        id={youtubeId}
+        title={title}
+        cookie
+        webp
+        adNetwork
+        client:load
+    />
+  </div>
