@@ -26,7 +26,7 @@ const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM
         <div>
         </div>
         <div class="block mt-20 mb-1 lg:grid grid-cols-4 gap-x-2 relative w-full">
-            <article class="blog max-w-2xl col-span-3 prose prose-img:rounded-md prose-headings:text-primary-red lg:prose-base">
+            <article class="blog max-w-2xl col-span-3 prose prose-img:rounded-md prose-h2:text-primary-red prose-headings:text-primary-black lg:prose-base">
                 <slot />
             </article>
             <TOC headings={headings} client:load />
@@ -52,5 +52,9 @@ const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM
 
     .blog :global(a):hover {
         background-size: 100% 2px;
+    }
+
+    .blog :global(.language-id) {
+        @apply -mt-4 bg-secondary-brown w-max text-primary-black rounded-b-md px-3 py-1 mb-4
     }
 </style>
