@@ -16,6 +16,8 @@ const { title, description, type } = Astro.props as Props;
 
 <head>
 	<title>{title}</title>
+	<meta name="description" content={description
+		|| "Personal website of Fazza Razaq Amiarso. Blog, Projects, and more." } />
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width" />
 	<!-- Favicons -->
@@ -28,12 +30,12 @@ const { title, description, type } = Astro.props as Props;
 	<!-- Open graph -->
 	<meta name="generator" content={Astro.generator} />
 	<meta property="og:title" content={title} />
-	<meta property="og:url" content={Astro.url.href} />
+	<meta property="og:url" content="https://fazzaamiarso.me" />
 	<meta property="og:description" content={description
 		|| "Personal website of Fazza Razaq Amiarso. Blog, Projects, and more." } />
 	<meta property="og:type" content={type || "website" } />
 	<meta property="og:image"
-		content="https://res.cloudinary.com/dkiqn0gqg/image/upload/v1660512696/og-dark_djug88.png" />
+		content="https://res.cloudinary.com/dkiqn0gqg/image/upload/v1660581454/og-fazzaamiarso.me_vgpgs2.jpg" />
 	<meta property="og:image:type" content="image/jpeg" />
 	<meta property="og:image:width" content="1200" />
 	<meta property="og:image:height" content="630" />
@@ -59,6 +61,7 @@ const { title, description, type } = Astro.props as Props;
 			url("/fonts/montserrat-bold-webfont.woff") format("woff");
 		font-weight: 700;
 		font-style: normal;
+		font-display: swap;
 	}
 
 	@font-face {
@@ -67,6 +70,7 @@ const { title, description, type } = Astro.props as Props;
 			url("/fonts/montserrat-regular-webfont.woff") format("woff");
 		font-weight: normal;
 		font-style: normal;
+		font-display: swap;
 	}
 
 	@font-face {
@@ -75,6 +79,7 @@ const { title, description, type } = Astro.props as Props;
 			url("/fonts/montserrat-semibold-webfont.woff") format("woff");
 		font-weight: 600;
 		font-style: normal;
+		font-display: swap;
 	}
 
 	@font-face {
@@ -83,6 +88,7 @@ const { title, description, type } = Astro.props as Props;
 			url('/fonts/opensans-regular-webfont.woff') format('woff');
 		font-weight: normal;
 		font-style: normal;
+		font-display: swap;
 
 	}
 
@@ -92,6 +98,7 @@ const { title, description, type } = Astro.props as Props;
 			url('/fonts/opensans-bold-webfont.woff') format('woff');
 		font-weight: 700;
 		font-style: normal;
+		font-display: swap;
 
 	}
 
@@ -101,6 +108,7 @@ const { title, description, type } = Astro.props as Props;
 			url('/fonts/opensans-semibold-webfont.woff') format('woff');
 		font-weight: 600;
 		font-style: normal;
+		font-display: swap;
 
 	}
 
@@ -117,6 +125,9 @@ const { title, description, type } = Astro.props as Props;
 	h6 {
 		font-family: "montserrat";
 		font-weight: bold;
+	}
+	a{
+		word-break: break-all;
 	}
 
 	body {
