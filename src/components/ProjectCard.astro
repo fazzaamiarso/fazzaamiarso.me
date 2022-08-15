@@ -9,7 +9,7 @@ const slug = title.toLowerCase().split(" ").join('-');
 ---
 
 <li class="hover:ring-primary-red transition-all relative basis-full sm:basis-[45%] lg:basis-[32%] lg:flex-nowrap hover:cursor-pointer rounded-lg max-w-md p-4 ring-2 ring-secondary-brown">
-    <Image src={import.meta.env.DEV ? requestD : cover} aspectRatio="16:9" format="webp" class="rounded-lg ring-1 ring-secondary-brown transition-all" alt={title}
+    <Image src={import.meta.env.DEV ? requestD : cover} aspectRatio="16:9" format="webp" class="animate__animated animate__fadeIn rounded-lg ring-1 ring-secondary-brown transition-all" alt={title}
         width={1200} height={630} />
     
     <h2 class="text-xl mt-2 mb-1 text-primary-red">{title}</h2>

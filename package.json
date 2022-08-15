@@ -22,6 +22,7 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "astro-icon": "^0.7.3",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.5",

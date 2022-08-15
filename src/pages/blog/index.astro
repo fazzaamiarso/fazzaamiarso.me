@@ -4,6 +4,7 @@ import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 dayjs.extend(localizedFormat)
 import type { BlogFM } from 'types/frontmatter';
+import 'animate.css';
 
 const posts = await Astro.glob<BlogFM>("./*.mdx")
 const postsByLatest = posts.sort((a, b) => dayjs(b.frontmatter.publishedAt).unix() - dayjs(a.frontmatter.publishedAt).unix())
@@ -12,11 +13,11 @@ const postsByLatest = posts.sort((a, b) => dayjs(b.frontmatter.publishedAt).unix
 <Layout title="Fazza Razaq Amiarso"
     description="Blog of Fazza Razaq Amiarso. Writing about Full-stack development and struggles.">
     <main class="mt-12">
-        <h1 class="text-primary-black text-4xl">The Blog</h1>
-        <p class="text-secondary-text">Where I dump and share my idea. And sometime struggle. </p>
-        <ul class="mt-12 space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-6">{postsByLatest.map(post => {
+        <h1 class="animate__animated animate__fadeInUp  text-primary-black text-4xl">The Blog</h1>
+        <p class="animate__animated animate__fadeInUp text-secondary-text">Where I dump and share my idea. And sometime struggle. </p>
+        <ul class=" mt-12 space-y-8 lg:space-y-0 lg:grid lg:grid-cols-2 lg:gap-6">{postsByLatest.map((post, idx) => {
             const slug = post.frontmatter.slug ?? post.frontmatter.title.toLowerCase().split(" ").join('-');
-            return <li class="py-2">
+            return <li class="animate__animated animate__fadeInUp  py-2">
                 <span class="text-xs mb-1 text-secondary-text">{dayjs(post.frontmatter.publishedAt).format("LL")}</span>
                 <h2 class="text-2xl mb-2">{post.frontmatter.title}</h2>
                 <p class="text-secondary-text mb-4 prose">{post.frontmatter.description}</p>
@@ -25,3 +26,12 @@ const postsByLatest = posts.sort((a, b) => dayjs(b.frontmatter.publishedAt).unix
             })}</ul>
     </main>
 </Layout>
+
+<style>
+    :root{
+        --animate-duration : .3s;
+    }
+   li {
+    --animate-delay: .2s
+   }
+</style>

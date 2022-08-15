@@ -5,8 +5,8 @@ import Icon from "astro-icon";
 
 <Layout title="About me - Fazza Amiarso" description="Get to know more about Fazza Razaq Amiarso in this page.">
     <main class="max-w-[60ch] prose mt-12">
-        <h1 class="text-3xl">About me</h1>
-        <div class="space-y-4 ">
+        <h1 class="animate__animated animate__fadeInUp text-3xl">About me</h1>
+        <div class="animate__animated animate__fadeInUp space-y-4 ">
             <p class="text-lg">Hello again
                 <Icon name="emojione:waving-hand" width="20" class="inline-block" />, I am Fazza. A fullstack developer
                 from Indonesia
@@ -20,3 +20,8 @@ import Icon from "astro-icon";
         </div>
     </main>
 </Layout>
+<style>
+    div {
+        --animate-delay : .3s;
+    }
+</style>
