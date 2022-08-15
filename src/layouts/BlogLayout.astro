@@ -14,7 +14,7 @@ const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM
 
 <Layout title={title} description={description}>
     <main class="mt-20">
-        <div class="prose max-w-3xl">
+        <div class="prose  max-w-3xl">
             <span class="text-sm text-secondary-text">Published at {dayjs(publishedAt).format("LL")}</span>
             <h1>{title}</h1>
             <p>{description}</p>
@@ -42,8 +42,6 @@ const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM
         position: relative;
         font-weight: 600;
         text-decoration: none;
-        color: #e16358;
-        background-image: linear-gradient(#e16358, #e16358);
         background-repeat: no-repeat;
         background-size: 0% 2px;
         background-position: left bottom;
