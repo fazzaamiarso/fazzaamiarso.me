@@ -5,23 +5,23 @@ import clsx from "clsx";
 
 type Mode = "light" | "dark";
 
+const setDarkModeClass = (mode: Mode) => {
+  const documentBody = window.document.querySelector("body");
+  if (mode === "dark") {
+    documentBody?.classList.add("dark");
+  } else {
+    documentBody?.classList.remove("dark");
+  }
+};
+
 export default function ToggleSwitch() {
-  const [mode, setMode] = useDarkMode();
+  const [mode, setMode] = useState<Mode>("light");
 
   const toggleMode = () => {
     const currentMode = mode === "dark" ? "light" : "dark";
-    const documentBody = window.document.querySelector("body");
-    if (currentMode === "dark") {
-      documentBody?.classList.add("dark");
-    } else {
-      documentBody?.classList.remove("dark");
-    }
-    setMode();
+    setDarkModeClass(currentMode);
+    setMode(currentMode);
   };
-
-  useEffect(() => {
-    toggleMode();
-  }, []);
 
   return (
     <>
@@ -48,30 +48,4 @@ export default function ToggleSwitch() {
   );
 }
 
-const useDarkMode = () => {
-  const [mode, setMode] = useState<Mode>("light");
 
-  const setTheme = (mode: Mode) => {
-    localStorage.setItem("theme", mode);
-    setMode(mode);
-  };
-
-  const toggleMode = () => {
-    if (mode === "light") setMode("dark");
-    if (mode === "dark") setMode("light");
-  };
-
-  useEffect(() => {
-    const localTheme = localStorage.getItem("theme") as Mode;
-
-    window.matchMedia &&
-    window.matchMedia("(prefers-color-scheme: dark)").matches &&
-    !localTheme
-      ? setMode("dark")
-      : localTheme
-      ? setTheme(localTheme)
-      : setMode("light");
-  }, []);
-
-  return [mode, toggleMode] as const;
-};
