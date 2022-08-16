@@ -4,23 +4,48 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
-      // typography: (theme) => ({
-      //   invert: {
-      //     css: {
-      //       "--tw-prose-headings": "#fee103",
-      //     },
-      //   },
-      // }),
       colors: {
         primary: {
-          black: "#101011",
-          white: "#fffffd",
-          red: "#e16358",
+          text: "rgb(var(--color-primary-text) / <alpha-value>)",
+          bg: "rgb(var(--color-primary-bg) / <alpha-value>)",
+          red: "rgb(var(--color-primary-red) / <alpha-value>)",
         },
         secondary: {
-          text: "#666764",
-          brown: "#f9f4f0",
+          text: "rgb(var(--color-secondary-text) / <alpha-value>)",
+          brown: "rgb(var(--color-secondary-brown) / <alpha-value>)",
         },
+      },
+      typography: ({ theme }) => {
+        const red = theme("colors.primary.red / 1");
+
+        return {
+          DEFAULT: {
+            css: {
+              h1: {
+                color: theme("colors.primary.text/1"),
+              },
+              h2: {
+                color: red,
+              },
+              a: {
+                position: "relative",
+                "font-weight": "600",
+                "text-decoration": "none",
+                color: red,
+                "background-image": `linear-gradient(${theme(
+                  "colors.primary.red / 1"
+                )}, ${red})`,
+                "background-repeat": "no-repeat",
+                "background-size": "0% 2px",
+                "background-position": "left bottom",
+                transition: ".3s background-size ease",
+                "&:hover": {
+                  "background-size": "100% 2px",
+                },
+              },
+            },
+          },
+        };
       },
     },
   },

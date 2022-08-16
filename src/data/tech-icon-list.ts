@@ -2,8 +2,13 @@ type Packs = "simple-icons" | "logos" | "teenyicons" | "mdi";
 
 export const icon_list: Record<
   string,
-  | { name: string; iconName: `${Packs}:${string}`; custom?: false }
-  | { name: string; iconName: string; custom: true }
+  | {
+      name: string;
+      iconName: `${Packs}:${string}`;
+      custom?: false;
+      background?: boolean;
+    }
+  | { name: string; iconName: string; custom: true; background?: boolean }
 > = {
   react: {
     name: "React",
@@ -32,6 +37,7 @@ export const icon_list: Record<
   remix: {
     name: "Remix",
     iconName: "logos:remix-icon",
+    background: true,
   },
   astro: {
     name: "Astro",

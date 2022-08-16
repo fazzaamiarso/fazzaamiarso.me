@@ -21,7 +21,7 @@ export default defineConfig({
         [rehypeExternalLinks, { rel: ["nofollow"], target: "_blank" }],
       ],
     }),
-    tailwind(),
+    tailwind({ config: { applyBaseStyles: false } }),
     image(),
   ],
   markdown: {

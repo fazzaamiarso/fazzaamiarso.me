@@ -2,6 +2,7 @@
 import Footer from "@/components/Footer.astro";
 import Navbar from "@/components/Navbar.astro";
 import 'animate.css';
+import '../styles/base.css'
 
 interface Props {
 	title: string,
@@ -48,97 +49,10 @@ const { title, description, type } = Astro.props as Props;
 	<!--  -->
 </head>
 
-<body class="bg-primary-white max-w-5xl mx-auto w-10/12">
+<body class="bg-primary-bg max-w-5xl mx-auto w-10/12 dark">
 	<Navbar />
 	<slot />
 	<Footer />
 </body>
 
 </html>
-<style is:global>
-	
-	@font-face {
-		font-family: "montserrat";
-		src: url("/fonts/montserrat-bold-webfont.woff2") format("woff2"),
-			url("/fonts/montserrat-bold-webfont.woff") format("woff");
-		font-weight: 700;
-		font-style: normal;
-		font-display: swap;
-	}
-
-	@font-face {
-		font-family: "montserrat";
-		src: url("/fonts/montserrat-regular-webfont.woff2") format("woff2"),
-			url("/fonts/montserrat-regular-webfont.woff") format("woff");
-		font-weight: normal;
-		font-style: normal;
-		font-display: swap;
-	}
-
-	@font-face {
-		font-family: "montserrat";
-		src: url("/fonts/montserrat-semibold-webfont.woff2") format("woff2"),
-			url("/fonts/montserrat-semibold-webfont.woff") format("woff");
-		font-weight: 600;
-		font-style: normal;
-		font-display: swap;
-	}
-
-	@font-face {
-		font-family: 'open-sans';
-		src: url('/fonts/opensans-regular-webfont.woff2') format('woff2'),
-			url('/fonts/opensans-regular-webfont.woff') format('woff');
-		font-weight: normal;
-		font-style: normal;
-		font-display: swap;
-
-	}
-
-	@font-face {
-		font-family: 'open-sans';
-		src: url('/fonts/opensans-bold-webfont.woff2') format('woff2'),
-			url('/fonts/opensans-bold-webfont.woff') format('woff');
-		font-weight: 700;
-		font-style: normal;
-		font-display: swap;
-
-	}
-
-	@font-face {
-		font-family: 'open-sans';
-		src: url('/fonts/opensans-semibold-webfont.woff2') format('woff2'),
-			url('/fonts/opensans-semibold-webfont.woff') format('woff');
-		font-weight: 600;
-		font-style: normal;
-		font-display: swap;
-
-	}
-
-	html {
-		scroll-padding-top: 5rem;
-		scroll-behavior: smooth;
-	}
-
-	h1,
-	h2,
-	h3,
-	h4,
-	h5,
-	h6 {
-		font-family: "montserrat";
-		font-weight: bold;
-	}
-	a{
-		word-break: break-all;
-	}
-
-	body {
-		font-family: "open-sans";
-		margin: 0;
-	}
-
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
-	}
-</style>

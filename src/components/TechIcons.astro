@@ -1,13 +1,15 @@
 ---
 import { Icon } from 'astro-icon'
 import { icon_list } from 'data/tech-icon-list';
+import clsx from 'clsx';
 
 const {iconName} = Astro.props;
 
 const pack = icon_list[iconName].iconName
 const name = icon_list[iconName].name
+const withBg = icon_list[iconName].background
 ---
 <div class="space-y-2 flex flex-col items-center ">
-    <Icon name={pack} class="w-10 aspect-square text-primary-black fill-primary-black" />
+    <Icon name={pack} class={clsx("w-10 aspect-square fill-primary-text text-primary-text", withBg ? "dark:bg-primary-text dark:p-2" : "")} />
     <p class="text-sm text-secondary-text">{name}</p>
 </div>

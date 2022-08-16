@@ -50,7 +50,9 @@ export default function TOC({ headings }: Props) {
                 className={clsx(
                   " p-2 transition-all",
                   h.depth > 2 ? "ml-4" : "",
-                  isActiveId ? "bg-secondary-brown  rounded-md" : ""
+                  isActiveId
+                    ? "bg-secondary-brown dark:bg-transparent  rounded-md"
+                    : ""
                 )}
               >
                 <a

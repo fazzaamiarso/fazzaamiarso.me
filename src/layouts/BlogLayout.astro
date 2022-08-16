@@ -14,11 +14,11 @@ const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM
 
 <Layout title={title} description={description}>
     <main class="mt-20">
-        <div class="prose  max-w-3xl">
+        <div class="prose dark:prose-invert  max-w-3xl">
             <span class="text-sm text-secondary-text">Published at {dayjs(publishedAt).format("LL")}</span>
             <h1>{title}</h1>
             <p>{description}</p>
-            <span class="text-primary-black text-sm flex items-center gap-1 font-semibold">
+            <span class="text-primary-text  text-sm flex items-center gap-1 font-semibold">
                 <Icon name="bi:stopwatch-fill" width='15' class="text-primary-red" /> {minutesRead}
             </span>
         </div>
@@ -26,7 +26,7 @@ const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM
         <div>
         </div>
         <div class="block mt-20 mb-1 lg:grid grid-cols-4 gap-x-2 relative w-full">
-            <article class="blog max-w-2xl col-span-3 prose prose-img:rounded-md prose-h2:text-primary-red prose-headings:text-primary-black lg:prose-base">
+            <article class="blog max-w-2xl col-span-3 prose dark:prose-invert prose-img:rounded-md lg:prose-base">
                 <slot />
             </article>
             <TOC headings={headings} client:load />
@@ -38,23 +38,7 @@ const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM
 </Layout>
 
 <style>
-    .blog :global(a) {
-        position: relative;
-        font-weight: 600;
-        text-decoration: none;
-        color: #e16358;
-        background-image : linear-gradient(#e16358, #e16358) ;
-        background-repeat: no-repeat;
-        background-size: 0% 2px;
-        background-position: left bottom;
-        transition: .3s background-size ease;
-    }
-
-    .blog :global(a):hover {
-        background-size: 100% 2px;
-    }
-
     .blog :global(.language-id) {
-        @apply -mt-4 bg-secondary-brown w-max text-primary-black rounded-b-md px-3 py-1 mb-4
+        @apply -mt-4 bg-secondary-brown w-max text-primary-text rounded-b-md px-3 py-1 mb-4
     }
 </style>
