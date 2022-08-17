@@ -11,7 +11,7 @@
         --color-secondary-brown : 249 244 240;
     }
 
-    html .dark {
+    html.dark {
       --color-primary-bg : 15 21 27;
       --color-primary-text : 242 245 247;
       --color-primary-red : 250 88 182;

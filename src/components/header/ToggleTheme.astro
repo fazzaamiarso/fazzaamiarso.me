@@ -1,0 +1,41 @@
+---
+import AstroIcon from "astro-icon";
+import clsx from "clsx";
+---
+
+<button
+    role="switch"
+    id="dark-mode"
+    class={clsx(
+        "px-2 py-1 rounded-md dark:ring-0 bg-white aspect-square",
+           "ring-2 ring-primary-text"
+    )}
+    onclick="window.toggleMode()"
+>
+    <AstroIcon id='sun' name="akar-icons:sun" width="20"  class="hidden dark:inline-block" /> 
+     <AstroIcon id='moon' name="akar-icons:moon" width="20" class="inline-block dark:hidden"  />         
+</button>
+<label for="dark-mode" class="sr-only"> Dark mode</label>
+
+
+
+<script is:inline>
+    const root = document.documentElement;
+    const currentTheme = localStorage.getItem("theme")
+
+    const toggleMode = () => {
+        root.classList.toggle("dark");
+        localStorage.setItem("theme", root.classList.contains("dark") ? "dark" : "light")
+    };
+
+    window.toggleMode = toggleMode;
+    if (
+        currentTheme === "dark" ||
+        (!("theme" in localStorage) &&
+            window.matchMedia("(prefers-color-scheme: dark)").matches)
+    ) {
+        root.classList.add("dark");
+    } else {
+        root.classList.remove("dark");
+    }
+</script>

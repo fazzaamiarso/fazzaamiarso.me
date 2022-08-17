@@ -1,6 +1,6 @@
 ---
 import clsx from "clsx";
-import ToggleSwitch from './ToggleTheme'
+import Toggle from "./ToggleTheme.astro";
 const navigation = [
     {
         name: "Home",
@@ -37,7 +37,7 @@ const isHomePath = Astro.url.pathname === "/"
                     )}>{item.name}</a></li>)
             })}
         </ul>
-        <ToggleSwitch client:idle/>
+        <Toggle/>
     </nav>
 </header>
 
