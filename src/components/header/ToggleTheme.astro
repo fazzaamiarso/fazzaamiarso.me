@@ -7,15 +7,15 @@ import clsx from "clsx";
     role="switch"
     id="dark-mode"
     class={clsx(
-        "px-2 py-1 rounded-md dark:ring-0 bg-white aspect-square overflow-hidden",
+        "px-2 py-1 rounded-md dark:ring-0 bg-white aspect-square overflow-hidden flex items-center",
            "ring-1 ring-primary-text"
     )}
     onclick="window.toggleMode()"
+    aria-label="dark mode"
 >
     <AstroIcon id='sun' name="akar-icons:sun" width="20"  class="hidden dark:inline-block animate__animated animate__slideInUp  animate__faster" /> 
      <AstroIcon id='moon' name="akar-icons:moon" width="20" class="inline-block dark:hidden animate__animated animate__slideInDown animate__faster"  />         
 </button>
-<label for="dark-mode" class="sr-only"> Dark mode</label>
 
 
 
@@ -37,7 +37,9 @@ import clsx from "clsx";
             window.matchMedia("(prefers-color-scheme: dark)").matches)
     ) {
         root.classList.add("dark");
+        switchBtn.ariaChecked = "true"
     } else {
         root.classList.remove("dark");
+        switchBtn.ariaChecked = "false";
     }
 </script>
