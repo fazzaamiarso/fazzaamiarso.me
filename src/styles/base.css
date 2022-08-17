@@ -9,6 +9,7 @@
         --color-primary-red : 225 99 88;
         --color-secondary-text : 102 103 100;
         --color-secondary-brown : 249 244 240;
+        
     }
 
     html.dark {
@@ -17,7 +18,6 @@
       --color-primary-red : 250 88 182;
       --color-secondary-text : 156 168 180;
       --color-secondary-brown : 63 51 81;
-      
     }
 
     body {

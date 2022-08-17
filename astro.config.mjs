@@ -26,7 +26,7 @@ export default defineConfig({
   ],
   markdown: {
     shikiConfig: {
-      theme: "dracula",
+      theme: "material-ocean",
     },
   },
 });
