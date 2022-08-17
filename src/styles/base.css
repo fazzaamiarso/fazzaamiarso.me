@@ -28,6 +28,10 @@
       @apply text-primary-text;
     }
 
+    .layout {
+      @apply max-w-5xl mx-auto w-10/12
+    }
+
 
   @font-face {
     font-family: "montserrat";

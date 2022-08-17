@@ -12,7 +12,7 @@ const { title, description, cover, github, liveSite, demo } = content as Project
 ---
 
 <Layout title={`${title} - Fazza Amiarso`} description={description}>
-    <main>
+    <main class="layout">
         <div class="mb-12">
             <Image src={import.meta.env.DEV ? requestd : cover } alt={title} format="webp" aspectRatio="16:9"
                 width={1200} height={630} class="rounded-md" />
