@@ -32,9 +32,8 @@ module.exports = {
                 "font-weight": "600",
                 "text-decoration": "none",
                 color: red,
-                "background-image": `linear-gradient(${theme(
-                  "colors.primary.red / 1"
-                )}, ${red})`,
+                "background-image": `linear-gradient(${red}
+                }, ${red})`,
                 "background-repeat": "no-repeat",
                 "background-size": "0% 2px",
                 "background-position": "left bottom",
@@ -42,6 +41,17 @@ module.exports = {
                 "&:hover": {
                   "background-size": "100% 2px",
                 },
+              },
+              code: {
+                padding: "1px",
+                background: "#737d8c2b",
+                "border-radius": "3px",
+              },
+              "code::before": {
+                content: '""',
+              },
+              "code::after": {
+                content: '""',
               },
             },
           },
