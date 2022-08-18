@@ -40,7 +40,7 @@ export default defineConfig({
     }),
     image(),
     sitemap(),
-    partytown({ config: { forward: ["dataLayer.push"] } }),
+    partytown(),
   ],
   markdown: {
     shikiConfig: {
