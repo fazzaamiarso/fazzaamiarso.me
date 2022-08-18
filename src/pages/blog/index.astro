@@ -20,7 +20,7 @@ const postsByLatest = posts.sort((a, b) => dayjs(b.frontmatter.publishedAt).unix
                 <span class="text-xs mb-1 text-secondary-text">{dayjs(post.frontmatter.publishedAt).format("LL")}</span>
                 <h2 class="text-2xl mb-2">{post.frontmatter.title}</h2>
                 <p class="text-secondary-text mb-4 prose">{post.frontmatter.description}</p>
-                <a href={`/blog/${slug}`} class="text-primary-red font-semibold inline-block">Read more</a>
+                <a href={`/blog/${slug}`} aria-label={`read more about ${post.frontmatter.title}`}  class="text-primary-red font-semibold inline-block">Read post</a>
             </li>
             })}</ul>
     </main>

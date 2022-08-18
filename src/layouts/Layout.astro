@@ -1,13 +1,13 @@
 ---
 import Footer from "@/components/Footer.astro";
 import Navbar from "@/components/header/Navbar.astro";
-import 'animate.css';
-import '../styles/base.css'
+import "animate.css";
+import "../styles/base.css";
 
 interface Props {
-	title: string,
-	description?: string,
-	type?: string,
+	title: string;
+	description?: string;
+	type?: string;
 }
 
 const { title, description, type } = Astro.props as Props;
@@ -15,44 +15,78 @@ const { title, description, type } = Astro.props as Props;
 
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<title>{title}</title>
+		<meta
+			name="description"
+			content={description ||
+			"Personal website of Fazza Razaq Amiarso. Blog, Projects, and more."}
+		/>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<!-- Favicons -->
+		<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="/images/apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="/images/favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="/images/favicon-16x16.png"
+		/>
+		<link
+			rel="mask-icon"
+			href="/images/safari-pinned-tab.svg"
+			color="#1c1c1c"
+		/>
+		<!--  -->
+		<!-- Open graph -->
+		<meta name="generator" content={Astro.generator} />
+		<meta property="og:title" content={title} />
+		<meta property="og:url" content="https://fazzaamiarso.me" />
+		<meta
+			property="og:description"
+			content={description ||
+			"Personal website of Fazza Razaq Amiarso. Blog, Projects, and more."}
+		/>
+		<meta property="og:type" content={type || "website"} />
+		<meta
+			property="og:image"
+			content="https://res.cloudinary.com/dkiqn0gqg/image/upload/v1660581454/og-fazzaamiarso.me_vgpgs2.jpg"
+		/>
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta
+			property="og:image:alt"
+			content="Fazza Razaq Amiarso personal site banner"
+		/>
+		<!--  -->
+		<!-- Twitter card -->
+		<meta name="twitter:card" content="summary" />
+		<meta name="twitter:creator" content="@faz_razq" />
+		<!--  -->
+		<script
+			is:inline
+			async
+			defer
+			data-website-id="d2fd6159-ac1b-46af-acb0-b5e52b5d10f9"
+			src="https://62fe7949d9d17f0d1f96334c--admirable-melba-d493ed.netlify.app/umami.js"
+		></script>
+	</head>
 
-<head>
-	<title>{title}</title>
-	<meta name="description" content={description
-		|| "Personal website of Fazza Razaq Amiarso. Blog, Projects, and more." } />
-	<meta charset="UTF-8" />
-	<meta name="viewport" content="width=device-width" />
-	<!-- Favicons -->
-	<link rel="icon" type="image/x-icon" href="/images/favicon.ico" />
-	<link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
-	<link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
-	<link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
-	<link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#1c1c1c">
-	<!--  -->
-	<!-- Open graph -->
-	<meta name="generator" content={Astro.generator} />
-	<meta property="og:title" content={title} />
-	<meta property="og:url" content="https://fazzaamiarso.me" />
-	<meta property="og:description" content={description
-		|| "Personal website of Fazza Razaq Amiarso. Blog, Projects, and more." } />
-	<meta property="og:type" content={type || "website" } />
-	<meta property="og:image"
-		content="https://res.cloudinary.com/dkiqn0gqg/image/upload/v1660581454/og-fazzaamiarso.me_vgpgs2.jpg" />
-	<meta property="og:image:type" content="image/jpeg" />
-	<meta property="og:image:width" content="1200" />
-	<meta property="og:image:height" content="630" />
-	<meta property="og:image:alt" content="Fazza Razaq Amiarso personal site banner" />
-	<!--  -->
-	<!-- Twitter card -->
-	<meta name="twitter:card" content="summary" />
-	<meta name="twitter:creator" content="@faz_razq" />
-	<!--  -->
-</head>
-
-<body class="bg-primary-bg ">
-	<Navbar />
-	<slot />
-	<Footer />
-</body>
-
+	<body class="bg-primary-bg">
+		<Navbar />
+		<slot />
+		<Footer />
+	</body>
 </html>
