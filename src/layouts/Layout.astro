@@ -75,14 +75,18 @@ const { title, description, type } = Astro.props as Props;
 		<meta name="twitter:card" content="summary" />
 		<meta name="twitter:creator" content="@faz_razq" />
 		<!--  -->
-		<script
-			is:inline
-			type="text/partytown"
+		<script type="text/partytown"
 			async
-			defer
-			data-website-id="d2fd6159-ac1b-46af-acb0-b5e52b5d10f9"
-			src="https://62fe7949d9d17f0d1f96334c--admirable-melba-d493ed.netlify.app/umami.js"
+			src="https://www.googletagmanager.com/gtag/js?id=G-8D9P9ZZ4D1"
 		></script>
+		<script type="text/partytown">
+			window.dataLayer = window.dataLayer || [];
+			function gtag() {
+				window.dataLayer.push(arguments);
+			}
+			gtag("js", new Date());
+			gtag("config", "G-8D9P9ZZ4D1");
+		</script>
 	</head>
 
 	<body class="bg-primary-bg">

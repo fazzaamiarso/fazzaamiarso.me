@@ -15,22 +15,36 @@ import partytown from "@astrojs/partytown";
 export default defineConfig({
   // vite: { ssr: { external: ["svgo"] } },
   site: "https://fazzaamiarso.me",
-  integrations: [react(), mdx({
-    remarkPlugins: {
-      extends: [remarkReadingTime]
-    },
-    rehypePlugins: [rehypeSlug, rehypeAutolinkHeadings, [rehypeExternalLinks, {
-      rel: ["nofollow"],
-      target: "_blank"
-    }]]
-  }), tailwind({
-    config: {
-      applyBaseStyles: false
-    }
-  }), image(), sitemap(), partytown()],
+  integrations: [
+    react(),
+    mdx({
+      remarkPlugins: {
+        extends: [remarkReadingTime],
+      },
+      rehypePlugins: [
+        rehypeSlug,
+        rehypeAutolinkHeadings,
+        [
+          rehypeExternalLinks,
+          {
+            rel: ["nofollow"],
+            target: "_blank",
+          },
+        ],
+      ],
+    }),
+    tailwind({
+      config: {
+        applyBaseStyles: false,
+      },
+    }),
+    image(),
+    sitemap(),
+    partytown({ config: { forward: ["dataLayer.push"] } }),
+  ],
   markdown: {
     shikiConfig: {
-      theme: "material-ocean"
-    }
-  }
+      theme: "material-ocean",
+    },
+  },
 });
