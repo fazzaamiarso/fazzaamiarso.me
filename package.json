@@ -12,7 +12,9 @@
   "devDependencies": {
     "@astrojs/image": "^0.3.3",
     "@astrojs/mdx": "^0.8.1",
+    "@astrojs/partytown": "^1.0.0",
     "@astrojs/react": "^1.0.0",
+    "@astrojs/sitemap": "^1.0.0",
     "@astrojs/tailwind": "^1.0.0",
     "@tailwindcss/line-clamp": "^0.4.0",
     "@tailwindcss/typography": "^0.5.4",
