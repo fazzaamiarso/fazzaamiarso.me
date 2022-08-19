@@ -4,6 +4,7 @@ title: "On Learning Web Page Rendering"
 description: "A Guide to Client Side Rendering, Server Side Rendering, and Static Site Generation."
 publishedAt: "2022-03-18"
 ---
+import Notes from '@/components/mdx/Notes.astro'
 
 As I was learning and building projects with Next js, I surely came across various ways of rendering your app and just proceed without fully understanding them. One thing for sure is that I was amazed by it. Eventually, I can make stuff with it, but no idea how it works.
 
@@ -73,7 +74,7 @@ Here is what the network tab looks like:
 
 ![static site generation example](https://cdn.hashnode.com/res/hashnode/image/upload/v1647523135648/o1erFRjoP.gif)
 
-> The site belongs to Vercel from their demo page. https://next-blog-wordpress.vercel.app/
+<Notes>The site belongs to Vercel from their demo page. https://next-blog-wordpress.vercel.app/</Notes>
 
 ### Pros
 
@@ -87,7 +88,7 @@ Here is what the network tab looks like:
 - **Making changes mean that you must rebuild your site and wait until the whole site is finished building**. After that, redeploy it. Imagine it is the e-commerce site, yikes😐.
 - **Data on your site most likely will be static or stale until you do a rebuild**. You could do some fetching on the client to get dynamic data. That is great for blogs, docs, or marketing pages, but not for dynamic page that always needs up-to-date data.
 
-> By looking at the cons, Next js actually try to eliminate those problems by introducing Incremental Static Generation (ISG). Which fundamentally is SSG, but with an extra capability to implement SSG on a per-page basis. This means you don't need to rebuild the entire site if there are changes happen.
+<Notes>By looking at the cons, Next js actually try to eliminate those problems by introducing Incremental Static Generation (ISG). Which fundamentally is SSG, but with an extra capability to implement SSG on a per-page basis. This means you don't need to rebuild the entire site if there are changes happen.</Notes>
 
 Here are what a typical flow will look like with an SSG site, assuming that there is no caching implemented:
 
@@ -101,14 +102,16 @@ Here are what a typical flow will look like with an SSG site, assuming that ther
 6. You rebuild and redeploy your site.
 7. User served a page with up-to-date data again.
 
-> 🛠 - Build website  
-> 🛳 - Deploy  
-> 😀 - Get page with fresh data  
-> 📝 - Make changes  
-> 😅 - Get page, but data is stale  
-> 🥱 - Waiting for page to build
+ <Notes>
+    🛠 - Build website  
+    🛳 - Deploy  
+    😀 - Get page with fresh data  
+    📝 - Make changes  
+    😅 - Get page, but data is stale  
+    🥱 - Waiting for page to build  
 
-> p.s. I borrowed the idea above from [Ryan Florence's video](https://www.youtube.com/watch?v=bfLFHp7Sbkg&t=511s).
+     p.s. I borrowed the idea above from [Ryan Florence's video](https://www.youtube.com/watch?v=bfLFHp7Sbkg&t=511s).
+ </Notes>
 
 ### Tools or framework
 

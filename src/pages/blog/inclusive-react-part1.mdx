@@ -5,6 +5,7 @@ description: "Let's make everyone can use the web with React"
 slug: "inclusive-react-part1"
 publishedAt: "2022-07-12"
 ---
+import Notes from '@/components/mdx/Notes.astro'
 
 When making an app, we get into code and solve problems most of the time. We focused on that cool feature. Finally, our app is finished. We are happy.
 
@@ -20,7 +21,7 @@ I chose React over vanilla Javascript because most of the resources online are i
 
 In this blog post, we will build three common components from scratch and make them accessible.
 
-> This blog will focus more on the accessibility side. So, we won’t go too deep on React and styling. I won't provide the styling here, but you can surely check out the [repo](https://github.com/fazzaamiarso/inclusive-react) or [live demo](https://inclusive-react.netlify.app/)
+<Notes>This blog will focus more on the accessibility side. So, we won’t go too deep on React and styling. I won't provide the styling here, but you can surely check out the [repo](https://github.com/fazzaamiarso/inclusive-react) or [live demo](https://inclusive-react.netlify.app/)</Notes>
 
 ## To-Do List
 
@@ -39,7 +40,7 @@ There are two ways to create a region, either by using `<section />` or `<div />
 
 Most people use sections recklessly without giving an accessible name. So, it will be identified as a generic element in the accessibility tree. Section should be used when there is no more specific element to represent a structure.
 
-> according to [WebAIM](https://webaim.org/projects/screenreadersurvey8/#finding), 68.8% of screen reader users primarily use heading to navigate by pressing 1 – 6 or `h` key.
+<Notes>according to [WebAIM](https://webaim.org/projects/screenreadersurvey8/#finding), 68.8% of screen reader users primarily use heading to navigate by pressing 1 – 6 or `h` key.</Notes>
 
 ```jsx
 <section aria-labelledby='todo-heading'>
@@ -186,8 +187,10 @@ const createTodo = (e) => {
 </form>;
 ```
 
-> We use the form element because by some screen readers, users will be informed when entering a form. When users of screen readers like JAWS or NVDA encounter an element, they are automatically entered into a special interaction mode variously called “forms mode” or “application mode”.  
-> ~ Inclusive Components by Heydon Pickering.
+<Notes>
+  We use the form element because by some screen readers, users will be informed when entering a form. When users of screen readers like JAWS or NVDA encounter an element, they are automatically entered into a special interaction mode variously called “forms mode” or “application mode”.
+   ~ Inclusive Components by Heydon Pickering.
+</Notes>
 
 Form makes submitting easier with the button inside it by enabling us to submit by pressing enter. We just need to add `type="submit"` to the submit button and listen for a submit event.
 
@@ -325,7 +328,7 @@ This action state might seem redundant. But, it pays off when there are more act
 
 After we set up the focus management, we still need to make our heading focusable. We can do that easily by adding `tabIndex={-1}` to the heading.
 
-> What do [tabIndex](https://web.dev/using-tabindex/) values mean.
+<Notes>What do [tabIndex](https://web.dev/using-tabindex/) values mean.</Notes>
 
 - **-1** means the element focusable programmatically i.e., the focus can only be done with our code.
 - **0** means the element is added to focus order and can be focused when users use tab key.
@@ -373,7 +376,7 @@ setAction("toggle")
 
 Remember that checkboxes must have a label to identify them. Screen readers will read the label along with the focused checkbox. Additionally, the label expands its input field activation area. We can say that label is an area extension of an input field.
 
-> Don’t prevent default a checkbox because it will prevent it from being toggled. Checkbox doesn’t cause form submission. Preventing default is useful when the element causes unintended behavior.
+<Notes heading="Pitfall" type="warning">Don’t prevent default a checkbox because it will prevent it from being toggled. Checkbox doesn’t cause form submission. Preventing default is useful when the element causes unintended behavior.</Notes>
 
 Accessibility is useful, right?
 
@@ -384,7 +387,7 @@ Now, our to-do list is good and accessible. Its accessibility is fine, but scree
 They will never know until they traverse our app again. What an annoying and cumbersome experience.
 Luckily, we have [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Live_Regions) that can give screen readers an announcement when something changed in our app. The live region could be implemented on notification, confirmation, etc.
 
-> We can trigger the live region announcement by modifying, adding, or removing the content in it. Live region default is to announce when content is added. If we want to change the default, we can set the aria-relevant to “removals”, “all”, “additions”, or “text”.
+<Notes>We can trigger the live region announcement by modifying, adding, or removing the content in it. Live region default is to announce when content is added. If we want to change the default, we can set the aria-relevant to “removals”, “all”, “additions”, or “text”.</Notes>
 
 We will visually hide our live region because we just want it for screen readers.
 

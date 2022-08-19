@@ -53,6 +53,9 @@ module.exports = {
               "code::after": {
                 content: '""',
               },
+              img: {
+                "margin-inline": "auto",
+              },
             },
           },
         };

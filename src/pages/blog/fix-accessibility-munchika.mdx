@@ -5,6 +5,8 @@ description: "An Enlightenment on Web Accessibility"
 slug : "fix-accessibility-munchika"
 publishedAt: "2022-04-06"
 ---
+import Notes from '@/components/mdx/Notes.astro'
+
 You might be wondering what I'm talking about. How could you make a site that you can't even use? What's the point of making it in the first place then? Relax... I'm talking about web accessibility. You can still access my site with a mouse without any problem.
 
 The problem is when you use your keyboard, the main content is totally ignored. Let alone assistive device users (e.g. screen reader), What a mess😩.
@@ -14,11 +16,12 @@ That example is only the tip of the iceberg. There are a lot more problems even 
 So, I'm going to try to solve it and document it in this article. Hoping I can help someone get started.
 Let's go!!
 
-> For your information, I am using:
-> - Remix (React framework) 
-> - Tailwind CSS (styling)
-> - NVDA (screen reader)
-> - AxeDevtools and Lighthouse (accessibility testing)
+ <Notes heading="For your information, I am using" type="info" >
+   - Remix (React framework)
+   - Tailwind CSS (styling)
+   - NVDA (screen reader)
+   - AxeDevtools and Lighthouse (accessibility testing)
+ </Notes>
 
 ## Color Contrast
 Color contrast is relatively easy to fix and the most frequently fail on my site. However, it can be tricky to fix when you have to adhere to a brand color that doesn't have enough contrast. 
@@ -157,7 +160,7 @@ In *Form Design Patterns*, Adam Silver suggested to remove the placeholder and p
 </label> 
 <input type='text' id='password' />
 ```
->NVDA will read the input field as 'Password, Must be at least 8+ characters, Input field, blank'
+<Notes>NVDA will read the input field as 'Password, Must be at least 8+ characters, Input field, blank'</Notes>
 
 Initially, the solution was great because the hint is described upfront and as a bonus, the input's tap area is wider. But, I found it strange because `<label>` that contains too much information can be a hindrance to users.  
 
@@ -173,7 +176,7 @@ The benefit of separating the hint from the label is that the label is more conc
 
 ![input with hint.png](https://cdn.hashnode.com/res/hashnode/image/upload/v1649186290695/BaxITxZQa.png)
 
->NVDA will read the input field as 'Password, Input field, blank, Must be at least 8+ characters '
+<Notes >NVDA will read the input field as 'Password, Input field, blank, Must be at least 8+ characters '</Notes>
 
 #### Form Validation Error
 It is common to place an error message under the problematic field for validation. At first, that was enough. It turns out there is a lot more to handle an error message. 
