@@ -33,7 +33,7 @@ module.exports = {
                 "text-decoration": "none",
                 color: red,
                 "background-image": `linear-gradient(${red}
-                }, ${red})`,
+                , ${red})`,
                 "background-repeat": "no-repeat",
                 "background-size": "0% 2px",
                 "background-position": "left bottom",

@@ -3,9 +3,9 @@ import type { BlogFM } from "types/frontmatter";
 import Layout from "./Layout.astro";
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
-import TOC from "@/components/TOC";
+import TOC from "@/components/mdx/TOC";
 import Icon from "astro-icon";
-import ReturnLink from "@/components/ReturnLink.astro";
+import ReturnLink from "@/components/mdx/ReturnLink.astro";
 dayjs.extend(localizedFormat)
 
 const { headings, frontmatter } = Astro.props;

@@ -3,9 +3,9 @@ import { Image } from "@astrojs/image/components";
 import type { ProjectsFM } from "types/frontmatter";
 import Layout from "./Layout.astro";
 import requestd from '../assets/requestd.png'
-import TOC from '@/components/TOC'
+import TOC from '@/components/mdx/TOC'
 import Icon from "astro-icon";
-import ReturnLink from "@/components/ReturnLink.astro";
+import ReturnLink from "@/components/mdx/ReturnLink.astro";
 
 const { content, headings } = Astro.props;
 const { title, description, cover, github, liveSite, demo } = content as ProjectsFM;
