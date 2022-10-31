@@ -18,9 +18,8 @@ export default defineConfig({
   integrations: [
     react(),
     mdx({
-      remarkPlugins: {
-        extends: [remarkReadingTime],
-      },
+      extendPlugins: "markdown",
+      remarkPlugins: [remarkReadingTime],
       rehypePlugins: [
         rehypeSlug,
         rehypeAutolinkHeadings,
@@ -38,7 +37,9 @@ export default defineConfig({
         applyBaseStyles: false,
       },
     }),
-    image(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
     sitemap(),
     partytown({ config: { forward: ["dataLayer.push"] } }),
   ],
