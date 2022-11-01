@@ -1,0 +1,66 @@
+---
+layout: "../../layouts/ProjectLayout.astro"
+title: "Invoys"
+description: "Open source and self-hostable invoice management app built with Next.js. Made to be free of cost."
+cover: "https://request-d.vercel.app/logo-on-black.png"
+publishedAt: "2022-08-01"
+techs : 
+    - next.js
+    - trpc
+    - tailwind
+    - prisma
+    - planetscale
+    - docker
+    - cypress
+    - vitest
+github: "https://github.com/fazzaamiarso/invoys"
+liveSite: "https://invoys.fzworld.xyz/"
+demo: "https://www.youtube.com/watch?v=Val51f1x4mY"
+---
+import ProjectTech from '@/components/project/ProjectTech.astro'
+import Notes from '@/components/mdx/Notes.astro'
+
+<Notes heading="Notes" >Invoys has been selected as a winner for *Courier Hacks:Opens Source* Hackathon. See on [DevPost](https://devpost.com/software/invoys)</Notes>
+
+## Inspiration
+On the internet, A lot of open-source Invoice management apps are built with Laravel. As a Javascript developer, I want to build the "React Solution" for devs that are familiar with React and Javascript.
+
+## Features
+- Freely customize the code.
+- Create invoice and manage clients.
+- Send Invoice link to email.
+- Download invoice to PDF.
+- Invite team members.
+- Magic Link Authentication.
+
+
+## Techs Used
+<ProjectTech techs={["nextjs", "trpc", "prisma", "tailwind", "docker",  "cypress", "vitest"]}>
+*Invoys* is bootsrapped with create-t3-app which based on Next.js.
+</ProjectTech>
+
+## Challenges
+### Defining schema in Prisma and Making the Entity Relationship Diagram
+Database is not my strong-side, although I have learned a bit before, my understanding is still hazy. I kept hitting a Foreign Key problem and ended up finding out that the problem is with the Prisma Planetscale support. 
+
+Planning and designing ERD is not an easy task for me, such as thinking about the relationship of tables, how is the best to connect fields, When to migrate or push a schema. And of course planning the architecture of the app.
+
+### Setup a Proper Open Source Repository
+This is my first time setting up a repo for OSS Properly. When using other's project, I took it for granted and doesn’t realize the effort put into making a good repo for others to contribute. 
+
+Writing docs is unexpectedly challenging, as there we must make sure contributors able to spin up our project properly regardless of environment. Setting up linting and styling is tedious because there are lot of configurations, rules, conventions, opinions that make it hard to just implement a thing, now I get it why people make templates and configuration or plugins packages.
+
+### Creating and Manipulating Tables
+This is the first time I am using table in a project and I need to make it as an input. After some thinking and evaluating, it is not as easy as I would like. Structuring the table data is pretty easy, the hard part is when manipulating and extracting the data in the table. Fortunately, I found out about tanstack table, which at least making manipulating data easier. Altough I felt like the implementation is verbose, unfamiliarity.
+
+### Testing Complex Interface + CI
+Testing a fully authenticated and app with lots of interaction is very difficult for a first-timer. I was blocked by how to work around data fetching in testing.
+
+**Testing Email Magic Link**. Initially, I use playwright to do E2E testing, but I found no luck to bypass the next-auth login page, such as mocking the session and cookies. Finally, I decided to use Cypress which also not easy, but I found a work-around which I felt pretty proud of.
+
+Frustrated, I ended up installing and learned Docker to have an Isolated Container for database. In the end, it actually not bad and I felt accomplished learning Docker, although just scratching on the surface.
+
+Another point of confusion was setting up the tests in CI, I had a rough idea on how to do it. Oh boy.. it's quite a journey until I can safely run all checks in Github Action.
+
+## Takeaway
+One important takeaway is just try to build it first, if stuck then put it off for later. Before that, I was doing too much calculations before trying something (e.g. library), it turns out by trying I can learn and fail much faster.

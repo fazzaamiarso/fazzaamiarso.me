@@ -13,7 +13,6 @@ import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
-  // vite: { ssr: { external: ["svgo"] } },
   site: "https://fazzaamiarso.me",
   integrations: [
     react(),

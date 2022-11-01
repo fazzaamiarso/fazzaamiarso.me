@@ -4,58 +4,59 @@ import Icon from "astro-icon";
 ---
 
 <Layout
-    title="About me - Fazza Amiarso"
-    description="Get to know more about Fazza Razaq Amiarso in this page."
->
-    <main class="layout mt-12">
-        <div  class=" max-w-[60ch] prose dark:prose-invert mt-12"> 
-            <h1 class="animate__animated animate__fadeInUp text-3xl">About me</h1>
-            <div class="animate__animated animate__fadeInUp space-y-4">
-                <p class="text-lg">
-                    <Icon
-                        name="emojione:waving-hand"
-                        width="20"
-                        class="inline-block"
-                    /> I am Fazza. A fullstack developer from Indonesia
-                    <Icon
-                        name="emojione:flag-for-indonesia"
-                        width="20"
-                        class="inline-block"
-                    />. I love building things, especially things that are helpful
-                    for people.
-                </p>
-                <p class="text-lg">
-                    I'm interested in teaching and sharing my knowledge to others.
-                    So, they don't have to struggle. I help others by writing blog.
-                    Sometimes on <a href="https://www.frontendmentor.io/profile/fazzaamiarso" target="_blank">frontendmentor.io</a>. I would like to build a
-                    community like Kent C. Dodds in Indonesia.
-                </p>
-                <p class="text-lg">
-                    Currently, I am working on my skills so I can contribute more on
-                    Open Source.
-                </p>
-            </div>
-        </div>
-    </main>
+  title="About me - Fazza Amiarso"
+  description="Get to know more about Fazza Razaq Amiarso in this page.">
+  <main class="layout mt-12">
+    <div class="max-w-[60ch] prose dark:prose-invert mt-12">
+      <h1 class="animate__animated animate__fadeInUp text-3xl">About me</h1>
+      <div class="animate__animated animate__fadeInUp space-y-4">
+        <p class="text-lg">
+          <Icon name="emojione:waving-hand" width="20" class="inline-block" /> I
+          am Fazza. A fullstack developer from Indonesia
+          <Icon
+            name="emojione:flag-for-indonesia"
+            width="20"
+            class="inline-block"
+          />. I love building things, especially things that are helpful for
+          people.
+        </p>
+        <p class="text-lg">
+          I'm interested in teaching and sharing my knowledge to others. So,
+          they don't have to struggle. I help others by writing blog. Sometimes
+          on <a
+            href="https://www.frontendmentor.io/profile/fazzaamiarso"
+            target="_blank">frontendmentor.io</a
+          >. I would like to build a community like Kent C. Dodds in Indonesia.
+        </p>
+        <p class="text-lg">
+          Currently, I am working on my skills so I can contribute more on Open
+          Source.
+        </p>
+      </div>
+    </div>
+  </main>
 </Layout>
 <style>
-    div {
-        --animate-delay: 0.3s;
-    }
+  div {
+    --animate-delay: 0.3s;
+  }
 
-   a {
-        position: relative;
-        font-weight: 600;
-        text-decoration: none;
-        color: var(--color-primary-red);
-        background-image: linearGradient(var(--color-primary-red), var(--color-primary-red));
-        background-repeat: no-repeat;
-        background-size: 0% 2px;
-        background-position: left bottom;
-        transition: .3s background-size ease;
-   }
+  a {
+    position: relative;
+    font-weight: 600;
+    text-decoration: none;
+    color: var(--color-primary-red);
+    background-image: linearGradient(
+      var(--color-primary-red),
+      var(--color-primary-red)
+    );
+    background-repeat: no-repeat;
+    background-size: 0% 2px;
+    background-position: left bottom;
+    transition: 0.3s background-size ease;
+  }
 
-    a:hover {
+  a:hover {
     background-size: 100% 2px;
-    } 
+  }
 </style>

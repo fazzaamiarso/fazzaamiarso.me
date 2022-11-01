@@ -86,6 +86,15 @@ export const icon_list: Record<
     iconName: "a11y",
     custom: true,
   },
+  docker: {
+    name: "Docker",
+    iconName: "simple-icons:docker",
+  },
+  vitest: {
+    name: "Vitest",
+    iconName: "vitest",
+    custom: true,
+  },
 };
 
 export const tech_names = Object.keys(icon_list);
