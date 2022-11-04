@@ -32,13 +32,13 @@
     "react-dom": "^18.2.0"
   },
   "dependencies": {
+    "@justinribeiro/lite-youtube": "^1.4.0",
     "animate.css": "^4.1.1",
     "astro-icon": "^0.8.0",
     "clsx": "^1.2.1",
     "dayjs": "^1.11.5",
     "hastscript": "^7.0.2",
     "mdast-util-to-string": "^3.1.0",
-    "react-lite-youtube-embed": "^2.3.1",
     "reading-time": "^1.5.0",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-external-links": "^2.0.0",

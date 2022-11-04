@@ -19,48 +19,93 @@ demo: "https://www.youtube.com/watch?v=Val51f1x4mY"
 ---
 import ProjectTech from '@/components/project/ProjectTech.astro'
 import Notes from '@/components/mdx/Notes.astro'
+import YoutubeEmbed from '@/components/mdx/YoutubeEmbed.astro'
 
 <Notes heading="Notes" >Invoys has been selected as a winner for *Courier Hacks:Opens Source* Hackathon. See on [DevPost](https://devpost.com/software/invoys)</Notes>
 
 ## Inspiration
-On the internet, A lot of open-source Invoice management apps are built with Laravel. As a Javascript developer, I want to build the "React Solution" for devs that are familiar with React and Javascript.
+On the internet, a lot of open-source Invoice management apps are built with Laravel. As a Javascript developer, I want to build the "React Solution" for devs that are familiar with React and Javascript.
 
 ## Features
 - Freely customize the code.
 - Create invoice and manage clients.
 - Send Invoice link to email.
 - Download invoice to PDF.
+- Export datas to CSV.
 - Invite team members.
 - Magic Link Authentication.
-
 
 ## Techs Used
 <ProjectTech techs={["nextjs", "trpc", "prisma", "tailwind", "docker",  "cypress", "vitest"]}>
 *Invoys* is bootsrapped with create-t3-app which based on Next.js.
 </ProjectTech>
 
+## Project Gallery
+| | |
+|:-------------------------:|:-------------------------:|
+|![Dashboard](https://i.imgur.com/x4Xxw5w.png)|![New invoice](https://i.imgur.com/1CZnXF3.png)|
+|![clients table](https://i.imgur.com/KehNO4f.png)|![client detail](https://i.imgur.com/x1TjQOP.png)|
+|![invoice detail](https://i.imgur.com/ujWxXj5.png)|![invoice batch](https://i.imgur.com/rpDor0M.gif)|
+|![login](https://i.imgur.com/fVusKr7.png)|
+
+## Demo
+<YoutubeEmbed youtubeId="Val51f1x4mY" title="invoys demo" />
+
 ## Challenges
 ### Defining schema in Prisma and Making the Entity Relationship Diagram
-Database is not my strong-side, although I have learned a bit before, my understanding is still hazy. I kept hitting a Foreign Key problem and ended up finding out that the problem is with the Prisma Planetscale support. 
+Database is not my strong side although I have learned a bit before, my understanding is still hazy. I kept hitting foreign Key problem and ended up finding out that the problem is with the Prisma Planetscale support. 
 
-Planning and designing ERD is not an easy task for me, such as thinking about the relationship of tables, how is the best to connect fields, When to migrate or push a schema. And of course planning the architecture of the app.
+Planning and designing ERD is not an easy task for me, such as thinking about the relationship of tables, how is the best to connect fields, when to migrate or push a schema, and of course planning the architecture of the app.
 
 ### Setup a Proper Open Source Repository
-This is my first time setting up a repo for OSS Properly. When using other's project, I took it for granted and doesn’t realize the effort put into making a good repo for others to contribute. 
+This is my first time setting up a repo in github properly. When using other's project, I took it for granted and didn't realize the efforts put into making a good repo for others to contribute. 
 
-Writing docs is unexpectedly challenging, as there we must make sure contributors able to spin up our project properly regardless of environment. Setting up linting and styling is tedious because there are lot of configurations, rules, conventions, opinions that make it hard to just implement a thing, now I get it why people make templates and configuration or plugins packages.
+Writing documentation id unexpectedly challenging as we must make sure contributors able to understand and contribute to our project properly regardless of environment. Setting up linting and styling rules is tedious because there are lot of configurations, rules, conventions, and opinions that make it hard to just implement. Now, I get it why developers created templates and plugins.
 
 ### Creating and Manipulating Tables
-This is the first time I am using table in a project and I need to make it as an input. After some thinking and evaluating, it is not as easy as I would like. Structuring the table data is pretty easy, the hard part is when manipulating and extracting the data in the table. Fortunately, I found out about tanstack table, which at least making manipulating data easier. Altough I felt like the implementation is verbose, unfamiliarity.
+In this project, I'm building tables and I need to make some of its row as an input field. After thinking and evaluating, it's not as easy as I would like, there a lot of states that changes often and need syncrhronization with server. Structuring the table content was pretty easy, the hard part comes when I need to manipulate and extract datas from the table. Fortunately, I found out about [tanstack table](https://tanstack.com/table/v8) that helped with managing datas. As a note, the API was kind of confusing for me, but it starts to make sense now.
 
-### Testing Complex Interface + CI
-Testing a fully authenticated and app with lots of interaction is very difficult for a first-timer. I was blocked by how to work around data fetching in testing.
+### Designing UI/UX
+First of, I'm bad at design although decent at basic UI fundamentals. Picking colors and making things looking good is not my forte. So, I spent a lot of time searching for refrences and ideas on the internet.
 
-**Testing Email Magic Link**. Initially, I use playwright to do E2E testing, but I found no luck to bypass the next-auth login page, such as mocking the session and cookies. Finally, I decided to use Cypress which also not easy, but I found a work-around which I felt pretty proud of.
+### Testing Complex Interface
+Testing a fully authenticated and complex interactions is very difficult. I was stuck on working around network requests and database while E2E testing.
 
-Frustrated, I ended up installing and learned Docker to have an Isolated Container for database. In the end, it actually not bad and I felt accomplished learning Docker, although just scratching on the surface.
+**Testing Email Magic Link**. I know how to test this flow, but it's confusing as I don't know how to verify the verification email in an automated testing environment.
 
-Another point of confusion was setting up the tests in CI, I had a rough idea on how to do it. Oh boy.. it's quite a journey until I can safely run all checks in Github Action.
+### Continuous Integration with Github Action
+Another point of confusion was running the tests in CI. I had a rough idea on how to do it. Oh boy.. it's quite a journey until I can safely build the workflow environment and  run all checks. It also come with some frustrated git commit message (sorry for future contributor 😅).
+
+## What I've Learned
+### Documenting project
+Writing about how your projects built or works clearly is crucial, I had to revise and rethink a lot of time. Taking screenshots or GIF of UI/UX can boosts the understanding of your upcoming contributor or user. Guide users on steps to contribute and setup the project locally.
+
+### Managing Server State and Client State
+By building things, I finally making sense what Kent C. Dodds meant [in this blog post](https://kentcdodds.com/blog/application-state-management-with-react). A lot of times, data that we worked on only make sense in server side. Copying server state to client can lead to bugs, such as state out of sync. Separating both of them, leads to a more robust app.
+
+### Utilize Docker
+ I thought Docker wasn't a necessary technology for me to learn. Thankfully, I've been proven wrong as Docker helped me to develop with many kind of technologies. Especially for this project, docker helped to build isolated local and test database which enables me to test without mocking a database connection. I also learned that Github Actions is basically running a docker container, which blows my mind.
+
+### Testing with Cypress and Vitest
+With the complexity of the project, I was able to learn to test users flows with all the interactions and network requests. Initially, I was testing with Playwright, but I couldn't get around on mocking login session. Frustrated, I switch to Cypress and still have the same problem, but I found a workaround that I am proud of. 
+
+Also, the environment needed in testing is different from development so it kinda throw me off, especially on mocking the database and mocking trpc's endpoint is still hard to do. I managed separate the database for different environments by switching from hosted database in Planetscale to Docker and it worked greatly. 
+
+Honestly, unit testing is not really hard, granted that I didn't test all of the components in this project, I still need to look into it. A benefit of unit testing that I really like is when I want to refactor a certain function, I am able to get feedback and catch bugs quickly.
+
+### Continuous Integration (CI).
+I learned to setup testing suite in github action which I've given up before. Thankfully, I kept going for this project maintainablity. I learned a lot from Kent C. Dodds CI flow.
+
+### Tables and Virtualization
+I never thought that table would be a beast to deal with. I think it's also because I use tanstack-table which is a headless library that gives me APIs that gives a lot of control, but require more setup and markup. I learned on how to manage states on table. 
+
+Virtualization is necessary as the table grows which can cause performance problem with loading and rendering a lot of items on a page.
+
+### Integrating with 3rd Party Vendor 
+This project integrates Courier API to send invoices to users email. I have to learn the Courier platform, connecting with the project, and making sure it works without a problem.
+
+### Building UI/UX
+I learned a lot on building UI/UX by watching [Gary Simon's Design Course](https://www.youtube.com/c/DesignCourse). Watching him fixing UI and give feedback live gives me insights on how to think about designing accessible UI/UX that looks good. Designing an inclusive UX is also important to make sure users don't get confused while using an app. I took a lot of design inspiration from [Tailwind UI](https://tailwindui.com/).
 
 ## Takeaway
-One important takeaway is just try to build it first, if stuck then put it off for later. Before that, I was doing too much calculations before trying something (e.g. library), it turns out by trying I can learn and fail much faster.
+An important takeaway is just try to build it first, if stuck then put it off for later. Before that, I was doing too much calculations before trying something (e.g. library), it turns out by trying I can learn and fail much faster.
