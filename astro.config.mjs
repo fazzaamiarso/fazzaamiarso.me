@@ -13,14 +13,12 @@ import partytown from "@astrojs/partytown";
 
 // https://astro.build/config
 export default defineConfig({
-  // vite: { ssr: { external: ["svgo"] } },
   site: "https://fazzaamiarso.me",
   integrations: [
     react(),
     mdx({
-      remarkPlugins: {
-        extends: [remarkReadingTime],
-      },
+      extendPlugins: "markdown",
+      remarkPlugins: [remarkReadingTime],
       rehypePlugins: [
         rehypeSlug,
         rehypeAutolinkHeadings,
@@ -38,7 +36,9 @@ export default defineConfig({
         applyBaseStyles: false,
       },
     }),
-    image(),
+    image({
+      serviceEntryPoint: "@astrojs/image/sharp",
+    }),
     sitemap(),
     partytown({ config: { forward: ["dataLayer.push"] } }),
   ],

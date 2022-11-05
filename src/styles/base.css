@@ -18,6 +18,7 @@
       --color-primary-red : 250 88 182;
       --color-secondary-text : 156 168 180;
       --color-secondary-brown : 63 51 81;
+      transition: color 0.2s ease-out 0s, background 0.2s ease-out 0s;
     }
 
     body {

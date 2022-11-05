@@ -2,21 +2,33 @@
 import { Image } from "@astrojs/image/components";
 import Icon from "astro-icon";
 import type { ProjectsFM } from "types/frontmatter";
-import requestD from '../assets/requestd.png'
+import requestD from "../assets/requestd.png";
 
 const { title, cover, description, techs } = Astro.props as ProjectsFM;
-const slug = title.toLowerCase().split(" ").join('-');
+const slug = title.toLowerCase().split(" ").join("-");
 ---
 
-<li class="hover:ring-primary-red transition-all relative basis-full sm:basis-[45%] lg:basis-[32%] lg:flex-nowrap hover:cursor-pointer rounded-lg max-w-md p-4 ring-2 ring-secondary-brown">
-    <Image src={import.meta.env.DEV ? requestD : cover} aspectRatio="16:9" format="webp" class="animate__animated animate__fadeIn rounded-lg ring-1 ring-secondary-brown transition-all dark:ring-transparent" alt={title}
-        width={1200} height={630} />
-    
-    <h3 class="text-xl mt-2 mb-1 text-primary-red">{title}</h3>
-    <p class="text-secondary-text text-sm line-clamp-3">{description}</p>
-    <ul class="flex items-center mt-2 gap-2 flex-wrap">{techs.map(tech => {
-        return (<li class="text-xs px-1 my-1 ring-1 text-secondary-text ring-secondary-text rounded-sm dark:text-primary-text">{tech}</li>)
-    })}</ul>
-    <a href={`/projects/${slug}`} class="mt-6 group flex gap-1 items-center text-sm text-primary-text font-semibold transition-all z-10 after:absolute after:inset-0 ">more
-        details <Icon name="akar-icons:arrow-right" width="20" class="group-hover:translate-x-1 transition-all" /> </a>
+<li
+  class="hover:ring-primary-red flex flex-col justify-between transition-all relative basis-full sm:basis-[45%] lg:basis-[32%] lg:flex-nowrap hover:cursor-pointer rounded-lg max-w-md p-4 ring-2 ring-secondary-brown">
+  <Image
+    src={import.meta.env.DEV ? requestD : cover}
+    aspectRatio="16:9"
+    format="webp"
+    class="animate__animated animate__fadeIn rounded-lg ring-1 ring-secondary-brown transition-all dark:ring-transparent"
+    alt={title}
+    width={1200}
+    height={630}
+  />
+
+  <h3 class="text-xl mt-2 mb-1 text-primary-red">{title}</h3>
+  <p class="text-secondary-text text-sm line-clamp-3">{description}</p>
+  <a
+    href={`/projects/${slug}`}
+    class="mt-6 group flex gap-1 items-center text-sm text-primary-text font-semibold transition-all z-10 after:absolute after:inset-0"
+    >more details <Icon
+      name="akar-icons:arrow-right"
+      width="20"
+      class="group-hover:translate-x-1 transition-all"
+    />
+  </a>
 </li>
