@@ -1,0 +1,78 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import { dayjs } from "lib/dayjs";
+import { Image } from "@astrojs/image/components";
+import type { ProjectsFM } from "types/frontmatter";
+import Icon from "astro-icon";
+
+const projects = await Astro.glob<ProjectsFM>("./*.mdx");
+const sortedProjects = projects.sort(
+  (a, b) =>
+    dayjs(b.frontmatter.publishedAt).unix() -
+    dayjs(a.frontmatter.publishedAt).unix()
+);
+---
+
+<Layout title="Projects" description="Fazza Amiarso's projects and work">
+  <main class="layout mt-12">
+    <h1 class="animate__animated animate__fadeInUp text-primary-text text-4xl">
+      Projects
+    </h1>
+    <p class="animate__animated animate__fadeInUp text-secondary-text">
+      Showcase of what I've work on.
+    </p>
+    <ul class="w-full divide-y-[1px] divide-secondary-brown">
+      {
+        sortedProjects.map((project) => {
+          const slug = project.frontmatter.title
+            .toLowerCase()
+            .split(" ")
+            .join("-");
+          return (
+            <li class="relative flex flex-col md:flex-row w-full max-w-5xl gap-8 py-12">
+              <div class="flex md:basis-[50%] lg:basis-[30%] justify-center rounded-md p-2 ring-1 ring-secondary-brown">
+                <Image
+                  src={project.frontmatter.cover}
+                  alt="cover"
+                  width={1200}
+                  height={630}
+                  format="webp"
+                  class="animate__animated animate__fadeIn w-full rounded-lg bg-cover ring-1 ring-secondary-brown transition-all dark:ring-transparent"
+                />
+              </div>
+              <div class="flex basis-[50%] flex-col flex-wrap justify-between">
+                <ul class="flex flex-wrap gap-2">
+                  {project.frontmatter.techs.map((tech) => {
+                    return (
+                      <li class="my-1 rounded-sm px-1 text-xs text-secondary-text ring-1 ring-secondary-text dark:text-primary-text">
+                        {tech}
+                      </li>
+                    );
+                  })}
+                </ul>
+                <div>
+                  <h3 class="mb-1 text-3xl text-primary-red">
+                    {project.frontmatter.title}
+                  </h3>
+                  <p class="text-secondary-text">
+                    {project.frontmatter.description}
+                  </p>
+                </div>
+                <a
+                  href={`/projects/${slug}`}
+                  class="group z-10 mt-6 flex items-center gap-1 text-sm font-semibold text-primary-text transition-all after:absolute after:inset-0">
+                  more details{" "}
+                  <Icon
+                    name="akar-icons:arrow-right"
+                    width="20"
+                    class="transition-all group-hover:translate-x-1"
+                  />
+                </a>
+              </div>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </main>
+</Layout>

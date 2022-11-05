@@ -2,74 +2,100 @@
 import { Image } from "@astrojs/image/components";
 import type { ProjectsFM } from "types/frontmatter";
 import Layout from "./Layout.astro";
-import requestd from '../assets/requestd.png'
-import TOC from '@/components/mdx/TOC'
+import requestd from "../assets/requestd.png";
+import TOC from "@/components/mdx/TOC";
 import Icon from "astro-icon";
 import ReturnLink from "@/components/mdx/ReturnLink.astro";
 
 const { content, headings } = Astro.props;
-const { title, description, cover, github, liveSite, demo } = content as ProjectsFM;
+const { title, description, cover, github, liveSite, demo } =
+  content as ProjectsFM;
 ---
 
 <Layout title={`${title} - Fazza Amiarso`} description={description}>
-    <main class="layout">
-        <div class="mb-12">
-            <Image src={import.meta.env.DEV ? requestd : cover } alt={title} format="webp" aspectRatio="16:9"
-                width={1200} height={630} class="rounded-md" />
-            <h1 class="text-4xl lg:text-5xl mt-8 mb-6">{title}</h1>
-            <p class="prose dark:prose-invert">{description}</p>
-            <div class="flex flex-col items-start sm:flex-row sm:items-center gap-6 mt-4">
-                <a href={github} target="_blank" class=" flex items-center gap-2 text-primary-red transition-all">
-                    <Icon name="simple-icons:github" width="20" /><span class="text-primary-text meta relative">Source
-                        code</span>
-                </a>
-                <a href={liveSite} target="_blank" class="  flex items-center gap-2 text-primary-red transition-all">
-                    <Icon name="akar-icons:link-chain" width="20" /><span class="text-primary-text meta relative">Live
-                        site</span>
-                </a>
-                {demo && <a href={demo} target="_blank" class="flex items-center gap-2 text-primary-red transition-all">
-                    <Icon name="simple-icons:youtube" width="20" /><span
-                        class="text-primary-text meta relative">Demo</span>
-                </a>}
-            </div>
-
-        </div>
-        <div class="block mb-12 lg:grid grid-cols-4 gap-x-2 relative w-full">
-            <article class="project max-w-2xl col-span-3 prose dark:prose-invert prose-img:rounded-md  lg:prose-base">
-                <slot />
-            </article>
-            <TOC headings={headings} client:load />
-        </div>
-        <div class="flex items-center justify-start w-full">
-            <ReturnLink href="/" text="return home" />
-        </div>
-    </main>
+  <main class="layout">
+    <div class="mb-12">
+      <Image
+        src={import.meta.env.DEV ? requestd : cover}
+        alt={title}
+        format="webp"
+        aspectRatio="16:9"
+        width={1200}
+        height={630}
+        class="rounded-md"
+      />
+      <h1 class="text-4xl lg:text-5xl mt-8 mb-6">{title}</h1>
+      <p class="prose dark:prose-invert">{description}</p>
+      <div
+        class="flex flex-col items-start sm:flex-row sm:items-center gap-6 mt-4">
+        <a
+          href={github}
+          target="_blank"
+          class="flex items-center gap-2 text-primary-red transition-all">
+          <Icon name="simple-icons:github" width="20" /><span
+            class="text-primary-text meta relative">Source code</span
+          >
+        </a>
+        <a
+          href={liveSite}
+          target="_blank"
+          class="flex items-center gap-2 text-primary-red transition-all">
+          <Icon name="akar-icons:link-chain" width="20" /><span
+            class="text-primary-text meta relative">Live site</span
+          >
+        </a>
+        {
+          demo && (
+            <a
+              href={demo}
+              target="_blank"
+              class="flex items-center gap-2 text-primary-red transition-all">
+              <>
+                <Icon name="simple-icons:youtube" width="20" />
+                <span class="meta relative text-primary-text">Demo</span>
+              </>
+            </a>
+          )
+        }
+      </div>
+    </div>
+    <div class="block mb-12 lg:grid grid-cols-4 gap-x-2 relative w-full">
+      <article
+        class="project max-w-2xl col-span-3 prose dark:prose-invert prose-img:rounded-md lg:prose-base">
+        <slot />
+      </article>
+      <TOC headings={headings} client:load />
+    </div>
+    <div class="flex items-center justify-start w-full">
+      <ReturnLink href="/" text="return home" />
+    </div>
+  </main>
 </Layout>
 
 <style>
-    .meta::before {
-        content: '';
-        position: absolute;
-        width: 100%;
-        height: 2px;
-        border-radius: 4px;
-        bottom: -4px;
-        left: 0;
-        transform-origin: right;
-        transform: scaleX(1);
-        transition: transform .2s ease-in-out;
-    }
+  .meta::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    border-radius: 4px;
+    bottom: -4px;
+    left: 0;
+    transform-origin: right;
+    transform: scaleX(1);
+    transition: transform 0.2s ease-in-out;
+  }
 
-    .meta::before {
-        @apply bg-primary-red
-    }
+  .meta::before {
+    @apply bg-primary-red;
+  }
 
-    .meta:hover::before {
-        transform-origin: left;
-        transform: scaleX(0);
-    }
+  .meta:hover::before {
+    transform-origin: left;
+    transform: scaleX(0);
+  }
 
-    :global(.language-id) {
-        @apply -mt-4 bg-secondary-brown w-max text-primary-text rounded-b-md px-3 py-1 mb-4
-    }
+  :global(.language-id) {
+    @apply -mt-4 mb-4 w-max rounded-b-md bg-secondary-brown px-3 py-1 text-primary-text;
+  }
 </style>

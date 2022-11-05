@@ -9,7 +9,7 @@ const slug = title.toLowerCase().split(" ").join("-");
 ---
 
 <li
-  class="hover:ring-primary-red transition-all relative basis-full sm:basis-[45%] lg:basis-[32%] lg:flex-nowrap hover:cursor-pointer rounded-lg max-w-md p-4 ring-2 ring-secondary-brown">
+  class="hover:ring-primary-red flex flex-col justify-between transition-all relative basis-full sm:basis-[45%] lg:basis-[32%] lg:flex-nowrap hover:cursor-pointer rounded-lg max-w-md p-4 ring-2 ring-secondary-brown">
   <Image
     src={import.meta.env.DEV ? requestD : cover}
     aspectRatio="16:9"
@@ -21,18 +21,7 @@ const slug = title.toLowerCase().split(" ").join("-");
   />
 
   <h3 class="text-xl mt-2 mb-1 text-primary-red">{title}</h3>
-  <p class="text-secondary-text text-sm line-clamp-2">{description}</p>
-  <ul class="flex items-center mt-2 gap-2 flex-wrap">
-    {
-      techs.map((tech) => {
-        return (
-          <li class="my-1 rounded-sm px-1 text-xs text-secondary-text ring-1 ring-secondary-text dark:text-primary-text">
-            {tech}
-          </li>
-        );
-      })
-    }
-  </ul>
+  <p class="text-secondary-text text-sm line-clamp-3">{description}</p>
   <a
     href={`/projects/${slug}`}
     class="mt-6 group flex gap-1 items-center text-sm text-primary-text font-semibold transition-all z-10 after:absolute after:inset-0"

@@ -1,35 +1,35 @@
 ---
-import dayjs from "dayjs";
-import localizedFormat from "dayjs/plugin/localizedFormat";
-dayjs.extend(localizedFormat);
 import ProjectCard from "@/components/ProjectCard.astro";
 import TechIcons from "@/components/TechIcons.astro";
 import Layout from "@/layouts/Layout.astro";
 import { tech_names } from "data/tech-icon-list";
 import type { ProjectsFM } from "types/frontmatter";
+import { dayjs } from "lib/dayjs";
 
 const projects = await Astro.glob<ProjectsFM>("./projects/*.mdx");
-const sortedProjects = projects.sort(
-  (a, b) =>
-    dayjs(b.frontmatter.publishedAt).unix() -
-    dayjs(a.frontmatter.publishedAt).unix()
-).slice(0, 3);
+const sortedProjects = projects
+  .sort(
+    (a, b) =>
+      dayjs(b.frontmatter.publishedAt).unix() -
+      dayjs(a.frontmatter.publishedAt).unix()
+  )
+  .slice(0, 3);
 ---
 
 <Layout title="Fazza Razaq Amiarso">
   <main class="layout my-12">
-		<h1
-		  class="animate__animated animate__fadeInUp animate__faster text-primary-red text-4xl mb-8">
-		  <div class="text-primary-text font-semibold text-xl mb-4">
-			Hi, I'm Fazza Razaq Amiarso
-		  </div>
-		  <div class="max-w-[20ch] mb-2">
-			I build software to help create a better world
-		  </div>
-		  <div class="text-primary-text text-lg font-normal">
-			and I love to share and teach while at it
-		  </div>
-		</h1>
+    <h1
+      class="animate__animated animate__fadeInUp animate__faster text-primary-red text-4xl mb-8">
+      <div class="text-primary-text font-semibold text-xl mb-4">
+        Hi, I'm Fazza Razaq Amiarso
+      </div>
+      <div class="max-w-[20ch] mb-2">
+        I build software to help create a better world
+      </div>
+      <div class="text-primary-text text-lg font-normal">
+        and I love to share and teach while at it
+      </div>
+    </h1>
     <div class="mt-20 space-y-8">
       <div>
         <h2 class="text-2xl">Techs</h2>
