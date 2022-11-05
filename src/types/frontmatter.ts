@@ -11,6 +11,7 @@ export type ProjectsFM = BaseFM & {
   github: string;
   liveSite: string;
   demo?: string;
+  featured: boolean;
 };
 
 export type BlogFM = BaseFM & {};

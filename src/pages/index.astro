@@ -4,15 +4,10 @@ import TechIcons from "@/components/TechIcons.astro";
 import Layout from "@/layouts/Layout.astro";
 import { tech_names } from "data/tech-icon-list";
 import type { ProjectsFM } from "types/frontmatter";
-import { dayjs } from "lib/dayjs";
 
 const projects = await Astro.glob<ProjectsFM>("./projects/*.mdx");
-const sortedProjects = projects
-  .sort(
-    (a, b) =>
-      dayjs(b.frontmatter.publishedAt).unix() -
-      dayjs(a.frontmatter.publishedAt).unix()
-  )
+const featureProjects = projects
+  .filter(p => p.frontmatter.featured)
   .slice(0, 3);
 ---
 
@@ -43,14 +38,17 @@ const sortedProjects = projects
       </div>
     </div>
     <div class="mt-12 space-y-8">
-      <div>
-        <h2 id="featured-projects" class="text-2xl">Projects</h2>
-        <p class="text-secondary-text">My featured works, in detail.</p>
+      <div class="flex w-full items-end">
+        <div>
+          <h2 id="featured-projects" class="text-2xl">Projects</h2>
+          <p class="text-secondary-text">My featured works, in detail.</p>
+        </div>
+        <a href="/projects" class="ml-auto meta relative text-primary-red font-semibold text-sm">See all projects</a>
       </div>
       <ul
         class="flex flex-col w-full gap-4 sm:justify-evenly sm:flex-row sm:flex-wrap lg:justify-between place-content-center">
         {
-          sortedProjects.map((project) => {
+          featureProjects.map((project) => {
             return <ProjectCard {...project.frontmatter} />;
           })
         }
