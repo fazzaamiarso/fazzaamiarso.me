@@ -12,7 +12,7 @@ const { heading = "", type = "info"} = Astro.props as Props;
 <aside class={clsx("w-full mb-12 p-4 px-8 rounded-md border-l-[3px]",
  type === "info" ? "dark:bg-[#242843] border-l-[#575eb7] bg-[#f3f5fc] dark:text-white" : "",
  type === "warning" ? "dark:bg-[#40302a] dark:text-white text-secondary-text bg-[#fcf4e7] border-l-[#db7d27]" : "",
-//  type === "danger" ? "bg-[#aa3030] border-l-[#db2727]" : "",
+ type === "danger" ? "bg-[#aa3030] border-l-[#db2727]" : "",
  )
  
  }>

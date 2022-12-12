@@ -8,6 +8,8 @@ import rehypeSlug from "rehype-slug";
 import { remarkReadingTime } from "./remark-plugin.mjs";
 import rehypeExternalLinks from "rehype-external-links";
 import sitemap from "@astrojs/sitemap";
+import tokyoNightStorm from "./tokyo-night-storm.json";
+import tokyoNight from "./tokyo-night.json";
 
 import partytown from "@astrojs/partytown";
 
@@ -44,7 +46,7 @@ export default defineConfig({
   ],
   markdown: {
     shikiConfig: {
-      theme: "material-ocean",
+      theme: tokyoNight,
     },
   },
 });
