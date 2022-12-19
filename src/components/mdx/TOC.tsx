@@ -49,19 +49,18 @@ export default function TOC({ headings }: Props) {
                 key={h.slug}
                 className={clsx(
                   " p-2 transition-all",
-                  h.depth > 2 ? "ml-4" : "",
+                  h.depth === 3 ? "ml-4" : "",
+                  h.depth === 4 ? "ml-8" : "",
                   isActiveId
-                    ? "bg-secondary-brown dark:bg-transparent  rounded-md"
+                    ? "rounded-md bg-secondary-brown  dark:bg-transparent"
                     : ""
-                )}
-              >
+                )}>
                 <a
                   href={`#${h.slug}`}
                   className={clsx(
-                    "line-clamp-1 text-sm",
+                    "text-sm line-clamp-1",
                     isActiveId ? "text-primary-red " : "text-secondary-text"
-                  )}
-                >
+                  )}>
                   {h.text}
                 </a>
               </li>
