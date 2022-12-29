@@ -134,9 +134,9 @@ The second element we will tackle is the switch.
 
 Looking at the design, we expect to change the switch's state by receiving a mouse click or tap on the two labels on the opposite end.
 
-My first instinct was to use [switch role]([https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/switch_role). It sounds reasonable but lacks the interactivity we need on both labels because the `switch` role only works with a single label.
+My first instinct was to use [switch role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/switch_role). It sounds reasonable but lacks the interactivity we need on both labels because the `switch` role only works with a single label.
 
-Fortunately, I found a [great article](https://scottaohara.github.io/a11y_styled_form_controls/src/radio-button--switch) with the solution for our switch button. It styles `<input type="radio"/> as a switch button, which makes sense and is accessible.
+Fortunately, I found a [great article](https://scottaohara.github.io/a11y_styled_form_controls/src/radio-button--switch) with the solution for our switch button. It styles `<input type="radio"/>` as a switch button, which makes sense and is accessible.
 
 We must look out for challenging styling when using the radio. We must be creative in handling the radio's positioning and focus area to remain accessible.
 
