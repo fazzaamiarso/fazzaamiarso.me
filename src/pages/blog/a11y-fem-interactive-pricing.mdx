@@ -48,7 +48,7 @@ We already set up the markup, so now we proceed to style the slider. Styling the
 
 The most important thing when custom styling is removing the default appearance.
 
-> Important. We won't go too deep in styling as there're articles that explain it in detail better. Please see [INSERT ARTICLE].
+> Important. We won't go too deep in styling as there're articles that explain it in detail better. Please see [this article](https://nikitahl.com/style-range-input-css) .
 
 ### How to Fill the Track?
 
@@ -122,6 +122,8 @@ pricingSlider.ariaValueNow = rangeVal;
 pricingSlider.ariaValueText = `${pageViews} page views for ${price} per month`;
 ```
 
+> For more details, check it out [on MDN](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Attributes/aria-valuetext)
+
 ## Billing Frequency Switch
 
 The second element we will tackle is the switch.
@@ -132,13 +134,13 @@ The second element we will tackle is the switch.
 
 Looking at the design, we expect to change the switch's state by receiving a mouse click or tap on the two labels on the opposite end.
 
-My first instinct was to use [switch role]. It sounds reasonable but lacks the interactivity we need on both labels because the `switch` role only works with a single label.
+My first instinct was to use [switch role]([https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Roles/switch_role). It sounds reasonable but lacks the interactivity we need on both labels because the `switch` role only works with a single label.
 
-Fortunately, I found a [great article] with the solution for our switch button. It styles `<input type="radio"/> as a switch button, which makes sense and is accessible.
+Fortunately, I found a [great article](https://scottaohara.github.io/a11y_styled_form_controls/src/radio-button--switch) with the solution for our switch button. It styles `<input type="radio"/> as a switch button, which makes sense and is accessible.
 
 We must look out for challenging styling when using the radio. We must be creative in handling the radio's positioning and focus area to remain accessible.
 
-I prefer the approach of [this article] that use an extra span inside the switch. It also means we have to hide the span from screen reader users.
+I prefer the approach of [this article](https://www.sarasoueidan.com/blog/toggle-switch-design/) that use an extra span inside the switch. It also means we have to hide the span from screen reader users.
 
 ### Focus Ring
 
@@ -187,7 +189,7 @@ Some text has a particular format in the design, such as currency and pageviews.
 
 Many developers hardcode the format or create logic to define it dynamically. Although their solutions work, it won't be easy to handle localization. So, there are better ways to tackle it.
 
-Thankfully, Javascript has a built-in API that can handle basic to some advanced formatting tasks. It's called `Intl`. I will go through it quickly since it's a bonus.
+Thankfully, Javascript has a built-in API that can handle basic to some advanced formatting tasks. It's called [`Intl`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat/NumberFormat#options). I will go through it quickly since it's a bonus.
 
 Let's use it to format the currency.
 
