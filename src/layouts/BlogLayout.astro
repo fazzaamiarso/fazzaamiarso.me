@@ -37,8 +37,15 @@ const { title, description, publishedAt, minutesRead } = frontmatter as BlogFM
     </main>
 </Layout>
 
-<style>
-    .blog :global(.language-id) {
+<style is:global>
+    .blog .language-id {
         @apply -mt-4 bg-secondary-brown w-max text-primary-text rounded-b-md px-3 py-1 mb-4
+    }
+
+    .blog pre::-webkit-scrollbar {
+        @apply bg-gray-900 h-1 rounded-full ;        
+    }
+    .blog pre::-webkit-scrollbar-thumb {
+        @apply bg-gray-600 rounded-full
     }
 </style>
